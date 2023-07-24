@@ -98,20 +98,20 @@ const speedEl = document.getElementById("speed");
 const coinsEl = document.getElementById("coins");
 
 // Update the HTML content with the live values
-energyEl.textContent += energy;
-healthEl.textContent += health;
-speedEl.textContent += speed;
-coinsEl.textContent += coins;
+// energyEl.textContent += energy;
+// healthEl.textContent += health;
+// speedEl.textContent += speed;
+// coinsEl.textContent += coins;
 
 
 // ===================================================PHASES====================================================
 
 
+let currentPhaseIndex = 0; // Initialize the current phase index to 0 (first phase)
 
   function navigateForward() {
 	let phases = ["innit", "Logo", "Greeting", "Q-i", "Stats-i", "Briefing", "Instructions", "Map-1", "Stage-1-X", "Stats-1-X", "Map-2", "Stage-2-X", "Stats-2-X", "Map-3", "Shop-3-X", "Stats-3-X", "Map-4", "Stage-4-X", "Stats-4-X", "Map-5", "Stage-5-X", "Stats-4-X", "Map-6", "Stage-6-X", "Stats-6-X", "Map-7", "Stage-7-X", "Stats-7-X", "Times-Up", "Wakeup", "Ending", "Postlude", "Credits"];
 
-    let currentPhaseIndex = 0; // Initialize the current phase index to 0 (first phase)
     // Get the current phase element from the DOM based on its ID
     let currentPhaseId = phases[currentPhaseIndex];
     let currentPhaseElement = document.getElementById(currentPhaseId);
