@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 482.06 39.83">
+  <defs>
+    <style>
+      .cls-1 {
+        letter-spacing: 0em;
+      }
+
+      .cls-2 {
+        font-family: GeneralSansVariable-Regular, 'General Sans Variable';
+        font-size: 14.18px;
+        font-variation-settings: 'wght' 400;
+      }
+
+      .cls-2, .cls-3, .cls-4, .cls-5 {
+        stroke: #fff200;
+      }
+
+      .cls-2, .cls-5 {
+        fill: #fff200;
+        stroke-miterlimit: 10;
+        stroke-width: .5px;
+      }
+
+      .cls-3 {
+        fill: none;
+      }
+
+      .cls-6 {
+        letter-spacing: -.08em;
+      }
+
+      .cls-7 {
+        letter-spacing: -.03em;
+      }
+
+      .cls-4 {
+        fill: #fff;
+        font-family: GeneralSansVariable-Extralight, 'General Sans Variable';
+        font-size: 6.63px;
+        font-variation-settings: 'wght' 200;
+        font-weight: 200;
+        stroke-width: .3px;
+      }
+
+      .cls-8 {
+        letter-spacing: .03em;
+      }
+
+      .cls-9 {
+        letter-spacing: -.07em;
+      }
+
+      .cls-10 {
+        letter-spacing: -.02em;
+      }
+    </style>
+  </defs>
+  <polygon class="cls-3" points="6.2 .5 108.2 .5 111.69 28.99 .61 27.02 6.2 .5"/>
+  <text class="cls-2" transform="translate(60.1 19.94)"><tspan class="cls-7" x="0" y="0">S</tspan><tspan class="cls-9" x="8.74" y="0">T</tspan><tspan x="16.24" y="0">A</tspan><tspan class="cls-10" x="26.05" y="0">R</tspan><tspan x="34.85" y="0">T</tspan></text>
+  <text class="cls-4" transform="translate(11.22 12.78) rotate(.55)"><tspan x="0" y="0">Click Here</tspan></text>
+  <text class="cls-4" transform="translate(16.29 20.11) rotate(.55)"><tspan class="cls-6" x="0" y="0">T</tspan><tspan class="cls-1" x="3.27" y="0">o Sta</tspan><tspan class="cls-8" x="18.43" y="0">r</tspan><tspan x="20.77" y="0">t:</tspan></text>
+  <polygon class="cls-5" points="48.79 9.72 48.68 21.37 56.15 15.28 48.79 9.72"/>
+</svg>

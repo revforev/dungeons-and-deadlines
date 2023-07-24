@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Dungeons and Deadlines</title>
+      <link id="theme" rel="stylesheet" type="text/css" href="style.css" />      
+      <link href="https://api.fontshare.com/v2/css?f[]=satoshi@1,700,500,2&f[]=chillax@600,500,700,400&f[]=telma@300,500,400&f[]=pencerio@50&f[]=clash-grotesk@400,600,500&display=swap" rel="stylesheet">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      
+   </head>
+
+   <body>
+
+
+<!-- TABLE OF CONTENTS (UI)
+     Each of the following represents one frame, or phase. Phases are marked up as sections. The user can travel between phases/sections using the navigator function.
+
+A.Intro
+         1.Logo ...........................................................................................66
+         2.Greeting
+         3.Q-i (Intro Quiz)
+         4.Stats-i
+         5.Rentsdue (Briefing + Instructions)
+         6.Instructions
+B.Map (Main)
+         7.Map-1
+         8.Stage-1-X
+         9.Stats-1-X
+         10.Map-2
+         11.Stage-2-X (inc. ?-2-X)
+         12.Stats-2-X
+         13.Map-3
+         14.Shop-3-X
+         15.Stats-3-X
+         16.Map-4
+         17.Stage-4-X (inc. ?-4-X)
+         18.Stats-4-X
+         19.Map-5
+         20.Stage-5-X (inc. ?-5-X)
+         21.Stats-5-X
+         22.Map-6
+         23.Stage-6-X
+         24.Stats-6-X
+         25.Map-7
+         26.Stage-7-X
+         27.Stats-7-X
+         28.Time's up (Rent is due, proceed to End)
+C.End 
+         29.(You hear X) Wake up ->
+         30.Ending
+         31.Postlude
+         32.Credits
+ -->
+	   
+	   
+<!--BUTTON WORKSHOP-->
+<!--<button class = "two-options" onclick="reverseNavigator('greeting', 'logo')" aria-label="Previous-phase"> </button>-->
+<!--
+<div class="four-options-container">
+
+<button class = "four-options" onclick="navigator('logo', 'start')" aria-label="Next-phase">a. Ignore the mind. Reach for the hoummous</button>
+<button class = "four-options" onclick="navigator('logo', 'start')" aria-label="Next-phase">b. Go get some fresh air</button>
+<button class = "four-options" onclick="navigator('logo', 'start')" aria-label="Next-phase">c. Search for you phone </button>
+<button class = "four-options" onclick="navigator('logo', 'start')" aria-label="Next-phase">d. Clean your room </button>
+
+</div>
+-->
+
+<div class="undo-restart-container hidden">
+<button class="undo" id = "undo-1" onclick="navigateBackward()" aria-label="Previous-phase">Undo</button>
+<button class="undo" id = "restart" onclick="reloadPage()" aria-label="Restart Game">Restart</button>
+</div>
+<!-- 0. Innit====================================================================================-->
+<section id	= "innit">
+	<img class= "logos" id = "logo-paths" src="images/innit.png" alt="">
+	<button class = "starts" id = "start-innit" onclick="navigateForward();" aria-label="Start button, click to start the game!"> </button>
+
+	   </section>
+<!-- 1.Logo============================================================================================ -->
+<section id="Logo" class="hidden">
+<img class= "logos" id = "logo-strokes" src="images/Logo.png" alt="">
+<button class = "starts" id = "start-logo" onclick="navigateForward(); changeBackgroundColor();" aria-label="Start button effect, click to start the game for real"> </button>
+
+</section>
+<!-- 2.Greeting======================================================================================== -->
+
+<section id="Greeting" class="hidden">
+
+<div class="morning-start hidden">
+<h1>Good morning ☼</h1>
+	<h2> It's good to have an early bird on board with us today. <br>Are you ready to wake up?</h2>
+   <div class="two-options-container">
+<!--       Proceed to next phase-->
+<button class= "two-options" onclick="navigateForward()" aria-label="Next-phase">Yes</button>
+<!--     Go back-->
+<button class= "two-options" onclick="reloadPage()" aria-label="Not ready to play - Reload Game">No</button>
+<!--	   Undo-->
+      </div>
+</div>
+
+<div class="afternoon-start hidden">
+<h1 class="typing-text">Good afternoon ☁️</h1>
+	<h2 >It's good to have a mid-day lark on board with us.
+	<br>Are you <i>sure</i> you need another coffee?</h2>
+	    <div class="two-options-container">
+<!--       Proceed to next phase-->
+<button class= "two-options" onclick="navigateForward()" aria-label="Next-phase">Yes</button>
+<!--	   Undo-->
+<button class= "two-options" onclick="reverseNavigator('q-i', 'greeting')" aria-label="Previous-phase">No</button>
+		</div>
+</div>
+	   
+<div class="evening-start hidden">
+<h1 class="typing-text">Good evening ☽ </h1>
+	<h2>Oh, a night owl? Everything is quiet and the internet works well! <br>
+	The night is still young, right?</h2>
+		    <div class="two-options-container">
+<!--       Proceed to next phase-->
+<button class= "two-options" onclick="navigateForward()" aria-label="Next-phase">Yes</button>
+<!--	   Undo-->
+<button class= "two-options" onclick="reverseNavigator('q-i', 'greeting')" aria-label="Previous-phase">No</button>
+		</div>
+
+</div>
+</section>
+
+<!-- 3.Q-i=============================================================================================== -->
+
+<section id="Q-i" class="hidden">
+   <div class="morning-q-i hidden">
+      <p>You lay down with your eyes closed in the dark. A minute or two pass, but somehow you decide to get up. You get up and just after, you open your eyes. You pull the blinds out, but it's still dark.. </p>
+      <div class="four-options-container">
+
+<button class = "four-options" onclick="navigator('stats-i', 'q-i'); soloNavigator('stats-i-m-health')" aria-label="Next-phase">a. Open the window and stretch </button>
+<button class = "four-options" onclick="navigator('stats-i', 'q-i'); soloNavigator('stats-i-m-energy'); energyIncrease()" aria-label="Next-phase">b. Take a sip from the water bottle </button>
+<button class = "four-options" onclick="navigator('stats-i', 'q-i'); soloNavigator('stats-i-m-back')" aria-label="Next-phase">c. Search for you phone </button>
+<button class = "four-options" onclick="navigator('stats-i', 'q-i'); soloNavigator('stats-i-m-speed')" aria-label="Next-phase">d. Check your phone </button>
+
+</div>
+   </div>
+
+   <div class="afternoon-q-i hidden">
+      <p>
+         You feel like you haven't moved from your chair for 6 hours. You're numb and can barely feel your body. Your mind is racing. You finally stand up and look out the window.. 
+      </p>
+
+      <div class="four-options-container">
+
+<button class = "four-options" onclick="navigator('stats-i', 'q-i'); soloNavigator('stats-i-e-health')" aria-label="Next-phase">a. Go out for a run </button>
+<button class = "four-options" onclick="navigator('stats-i', 'q-i'); soloNavigator('stats-i-e-energy'); energyIncrease()" aria-label="Next-phase">b. Have a glass of water </button>
+<button class = "four-options" onclick="navigator('stats-i', 'q-i'); soloNavigator('stats-i-e-back')" aria-label="Next-phase">c. Have another coffee </button>
+<button class = "four-options" onclick="navigator('stats-i', 'q-i'); soloNavigator('stats-i-e-speed')" aria-label="Next-phase">d. Go to the library </button>
+
+</div>
+   </div>
+
+   <div class="evening-q-i">
+      <p>The live stream you've been watching on Twitch isn't going anywhere. You get up from your sofa and turn off the TV. You go to the kitchen. As you open your fridge, a looming thought is haunting you. <br> You close the door and..</p>
+
+	       <div class="four-options-container">
+
+<button class = "four-options" onclick="navigator('stats-i', 'q-i'); soloNavigator('stats-i-e-health')" aria-label="Next-phase">a. Ignore the mind. Reach for the hoummous</button>
+<button class = "four-options" onclick="navigator('stats-i', 'q-i'); soloNavigator('stats-i-e-energy'); energyIncrease()" aria-label="Next-phase">b. Go get some fresh air</button>
+<button class = "four-options" onclick="navigator('stats-i', 'q-i'); soloNavigator('stats-i-e-back')" aria-label="Next-phase">c. Search for you phone </button>
+<button class = "four-options" onclick="navigator('stats-i', 'q-i'); soloNavigator('stats-i-e-speed')" aria-label="Next-phase">d. Clean your room </button>
+
+</div>
+   </div>
+</section>
+
+<!-- 4.Stats-i=========================================================================================== -->
+<section id="Stats-i" class="hidden">
+   <div class="morning-stats-i hidden">
+      <p class="hidden" id="stats-i-m-health">You open the window. The air is crisp. You take the yoga mat from under the bed and begin to <em>stretch.</em> This feels great. </em></p>
+      <p class="hidden" id="stats-i-m-energy">This is refreshing. You feel <em>energized.</em> </p>
+      <p class="hidden" id="stats-i-m-speed">You skim through notifications. Your internet bill is here! Luckily, you can pay it with credit. You pay it and notice the <em>speed increases</em> instantly. </p>
+      <div class="hidden" id="stats-i-m-back"><p>You pull the blinds back on. Complete darkness, falling asleep in 3...2...1... </p>
+   </div>
+
+   <div class="afternoon-stats-i hidden">
+      <p class="hidden" id="stats-i-a-health">It's actually a really nice day. You feel like you just got back in a body. This feels amazing and <em>improves your condition.</em> </p>
+      <p class="hidden" id="stats-i-a-energy">Oumph! Seems like you were dehydrated. You're coming back to life. You feel <em>energised.</em> </p>
+      <p class="hidden" id="stats-i-a-speed">You get to the local library. There's many people here just like you. You pull out your laptop and open Sublime. The <em>internet</em> connection here is great! </p>
+      <div class="hidden" id="stats-i-a-back"><p>You can't recall if this was your 4th of 5th of the day. You feel numb </p>
+   </div>
+
+   <div class="evening-stats-i">
+      <p class="hidden" id="stats-i-health">That was much needed. You feel <em>replenished.</em></p>
+	   <p class="hidden" id="stats-i-energy">You go outside. It's dark. You can feel the cool air on your skin. It fills you with <em>energy.</em></p>
+	   <p class="hidden" id="stats-i-speed">The pile of things next to you is now getting smaller and smaller. Underneath all the magazines - a black flash drive with a blue label on it. You can't figure out what it is. You plug it in. Your <em>internet speed</em> increases instantly! </p>
+	   <div class="hidden" id="stats-i-back"><p>You find your phone between cushions on the sofa. No notifications. You feel like you’re stuck in a loop.</p>
+      </div>
+   </div>
+   
+</section>
+
+<!-- 5.Briefing========================================================================================= -->
+<section id="Briefing" class="hidden">
+   <p>The year is 2006 and you're a Web Designer.
+Life's nice and simple. You haven't landed your first job, but your local fame 
+attracts some freelancing work for you.
+The internet speed is rubbish. Parties are great. You're always on the road. 
+The only question is: can you pay the rent by the end of the week?</p>
+</section>
+
+<!-- 5b.Instructions===================================================================================== -->
+<section id="Instructions" class="hidden">
+   <p>The rent is due in seven days! You need to get 10 coins for the rent. Each passed challenge will give out 3 coins. Good luck!</p>
+<p></p>
+</section>
+	
+<!-- 6.Map-1============================================================================================= -->
+<section id="Map-1" class="hidden">
+   <img class="hidden" id="map" src="images/map.jpg">
+</section>
+
+<!-- 7.L-2-X============================================================================================= -->
+<section id="Stage-1-X">
+   <!-- Set 1:
+```html
+<p class="questions" id="question-1">What does HTML stand for?</p>
+<p class="answers" id="answer-1" class="answer-correct">a) Hyper Text Markup Language</p>
+<p class="answers" id="answer-2">b) Home Tool Markup Language</p>
+<p class="answers" id="answer-3">c) Hyperlinks and Text Markup Language</p>
+<p class="answers" id="answer-4">d) Hyper Text Makeup Language</p>
+```
+
+Set 2:
+```html
+<p class="questions" id="question-2">Which element is used to create a hyperlink in HTML?</p>
+<p class="answers" id="answer-5">a) &lt;a&gt;</p>
+<p class="answers" id="answer-6" class="answer-correct">&lt;link&gt;</p>
+<p class="answers" id="answer-7">&lt;p&gt;</p>
+<p class="answers" id="answer-8">&lt;div&gt;</p>
+```
+
+Set 3:
+```html
+<p class="questions" id="question-3">What is the correct HTML element for inserting a line break?</p>
+<p class="answers" id="answer-9">&lt;br&gt;</p>
+<p class="answers" id="answer-10" class="answer-correct">&lt;hr&gt;</p>
+<p class="answers" id="answer-11">&lt;break&gt;</p>
+<p class="answers" id="answer-12">&lt;line&gt;</p>
+```
+
+Set 4:
+```html
+<p class="questions" id="question-4">Which attribute is used to define inline styles in HTML?</p>
+<p class="answers" id="answer-13">a) class</p>
+<p class="answers" id="answer-14" class="answer-correct">b) style</p>
+<p class="answers" id="answer-15">c) id</p>
+<p class="answers" id="answer-16">d) src</p>
+```
+
+Set 5:
+```html
+<p class="questions" id="question-5">Which tag is used to define an unordered list in HTML?</p>
+<p class="answers" id="answer-17" class="answer-correct">&lt;ul&gt;</p>
+<p class="answers" id="answer-18">&lt;ol&gt;</p>
+<p class="answers" id="answer-19">&lt;li&gt;</p>
+<p class="answers" id="answer-20">&lt;dl&gt;</p>
+```
+
+Set 6:
+```html
+<p class="questions" id="question-6">Which attribute is used to specify an external CSS file in HTML?</p>
+<p class="answers" id="answer-21">a) style</p>
+<p class="answers" id="answer-22" class="answer-correct">b) href</p>
+<p class="answers" id="answer-23">c) src</p>
+<p class="answers" id="answer-24">d) class</p>
+```
+
+Set 7:
+```html
+<p class="questions" id="question-7">What is the correct HTML element for the largest heading?</p>
+<p class="answers" id="answer-25">&lt;h1&gt;</p>
+<p class="answers" id="answer-26">b) &lt;heading&gt;</p>
+<p class="answers" id="answer-27">c) &lt;h6&gt;</p>
+<p class="answers" id="answer-28" class="answer-correct">&lt;h2&gt;</p>
+```
+
+Set 8:
+```html
+<p class="questions" id="question-8">Which attribute is used to specify a unique identifier for an element in HTML?</p>
+<p class="answers" id="answer-29">a) id</p>
+<p class="answers" id="answer-30">b) class</p>
+<p class="answers" id="answer-31" class="answer-correct">c) data-id</p>
+<p class="answers" id="answer-32">d) identifier</p>
+```
+
+Set 9:
+```html
+<p class="questions" id="question-9">How do you create a comment in HTML?</p>
+<p class="answers" id="answer-33" class="answer-correct">a) &lt;!-- This is a comment --&gt;</p>
+<p class="answers" id="answer-34">b) // This is a comment</p>
+<p class="answers" id="answer-35">c) /* This is a comment */</p>
+<p class="answers" id="answer-36">d) ** This is a comment **</p>
+```
+
+Set 10:
+```html
+<p class="questions" id="question-10">Which element is used to define a table row in HTML?</p>
+<p class="answers" id="answer-37">&lt;table&gt;</p>
+<p class="answers" id="answer-38">&lt;th&gt;</p>
+<p class="answers" id="answer-39" class="answer-correct">&lt;tr&gt;</p>
+<p class="answers" id="answer-40">&lt;td&gt;</p>
+```
+
+Set 11:
+```html
+<p class="questions" id="question-11">What does CSS stand for?</p>
+<p class="answers" id="answer-41">a) Creative Style Sheets</p>
+<p class="answers" id="answer-42" class="answer-correct">b) Cascading Style Sheets</p>
+<p class="answers" id="answer-43">c) Computer Style Sheets</p>
+<p class="answers" id="answer-44">d) Colorful Style Sheets</p>
+```
+
+Set 12:
+```html
+<p class="questions" id="question-12">Which CSS property is used to specify the background color of an element?</p>
+<p class="answers" id="answer-45">a) background-color</p>
+<p class="answers" id="answer-46" class="answer-correct">b) background</p>
+<p class="answers" id="answer-47">c) color</p>
+<p class="answers" id="answer-48">d) bg-color</p>
+```
+
+Set 13:
+```html
+<p class="questions" id="question-13">Which CSS property is used to control the size of an element's font?</p>
+<p class="answers" id="answer-49">a) text-size</p>
+<p class="answers" id="answer-50" class="answer-correct">b) font-size</p>
+<p class="answers" id="answer-51">c) size</p>
+<p class="answers" id="answer-52">d) font-style</p>
+```
+
+Set 14:
+```html
+<p class="questions" id="question-14">What is the correct CSS syntax
+
+ to select an element with the class "example"?</p>
+<p class="answers" id="answer-53">a) #example</p>
+<p class="answers" id="answer-54">b) .example</p>
+<p class="answers" id="answer-55">c) example</p>
+<p class="answers" id="answer-56" class="answer-correct">d) .example</p>
+```
+
+Set 15:
+```html
+<p class="questions" id="question-15">What is the correct CSS syntax to select all &lt;p&gt; elements inside a &lt;div&gt; element?</p>
+<p class="answers" id="answer-57">a) div > p</p>
+<p class="answers" id="answer-58">b) p div</p>
+<p class="answers" id="answer-59" class="answer-correct">c) div p</p>
+<p class="answers" id="answer-60">d) p + div</p>
+```
+
+Set 16:
+```html
+<p class="questions" id="question-16">Which CSS property is used to specify the spacing between lines of text?</p>
+<p class="answers" id="answer-61" class="answer-correct">a) line-height</p>
+<p class="answers" id="answer-62">b) text-spacing</p>
+<p class="answers" id="answer-63">c) letter-spacing</p>
+<p class="answers" id="answer-64">d) word-spacing</p>
+```
+
+Set 17:
+```html
+<p class="questions" id="question-17">What is the correct CSS syntax to set the text color of an element to red?</p>
+<p class="answers" id="answer-65">a) color: red;</p>
+<p class="answers" id="answer-66">b) text-color: red;</p>
+<p class="answers" id="answer-67">c) font-color: red;</p>
+<p class="answers" id="answer-68" class="answer-correct">d) color: red;</p>
+```
+
+Set 18:
+```html
+<p class="questions" id="question-18">Which CSS property is used to make an element bold?</p>
+<p class="answers" id="answer-69">a) font-weight</p>
+<p class="answers" id="answer-70" class="answer-correct">b) font-weight</p>
+<p class="answers" id="answer-71">c) text-decoration</p>
+<p class="answers" id="answer-72">d) font-style</p>
+```
+
+Set 19:
+```html
+<p class="questions" id="question-19">What is the correct CSS syntax to set the width and height of an element?</p>
+<p class="answers" id="answer-73">a) size: width height;</p>
+<p class="answers" id="answer-74" class="answer-correct">b) width: value; height: value;</p>
+<p class="answers" id="answer-75">c) dimension: value;</p>
+<p class="answers" id="answer-76">d) scale: value;</p>
+```
+
+Set 20:
+```html
+<p class="questions" id="question-20">Which CSS property is used to add a shadow effect to an element?</p>
+<p class="answers" id="answer-77" class="answer-correct">a) box-shadow</p>
+<p class="answers" id="answer-78">b) shadow</p>
+<p class="answers" id="answer-79">c) text-shadow</p>
+<p class="answers" id="answer-80">d) effect-shadow</p>
+``` -->
+</section>
+
+
+      <script src="app.js"></script>
+   </body>
+</html>
