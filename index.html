@@ -102,13 +102,13 @@ C.End
 
 <div class="afternoon-start hidden">
 <h1 class="typing-text">Good afternoon ☁️</h1>
-	<h2 >It's good to have a mid-day lark on board with us.
+	<h2 >A mid-day lark, are you? It's good to have you on board with us!
 	<br>Are you <i>sure</i> you need another coffee?</h2>
 	    <div class="two-options-container">
 <!--       Proceed to next phase-->
 <button class= "two-options" onclick="navigateForward()" aria-label="Next-phase">Yes</button>
 <!--	   Undo-->
-<button class= "two-options" onclick="reverseNavigator('q-i', 'greeting')" aria-label="Previous-phase">No</button>
+<button class= "two-options" onclick="reloadPage()" aria-label="Previous-phase">No</button>
 		</div>
 </div>
 	   
@@ -120,7 +120,7 @@ C.End
 <!--       Proceed to next phase-->
 <button class= "two-options" onclick="navigateForward()" aria-label="Next-phase">Yes</button>
 <!--	   Undo-->
-<button class= "two-options" onclick="reverseNavigator('q-i', 'greeting')" aria-label="Previous-phase">No</button>
+<button class= "two-options" onclick="reloadPage()" aria-label="Previous-phase">No</button>
 		</div>
 
 </div>
@@ -133,38 +133,38 @@ C.End
       <p>You lay down with your eyes closed in the dark. A minute or two pass, but somehow you decide to get up. You get up and just after, you open your eyes. You pull the blinds out, but it's still dark.. </p>
       <div class="four-options-container">
 
-<button class = "four-options" onclick="navigator('stats-i', 'q-i'); soloNavigator('stats-i-m-health')" aria-label="Next-phase">a. Open the window and stretch </button>
-<button class = "four-options" onclick="navigator('stats-i', 'q-i'); soloNavigator('stats-i-m-energy'); energyIncrease()" aria-label="Next-phase">b. Take a sip from the water bottle </button>
-<button class = "four-options" onclick="navigator('stats-i', 'q-i'); soloNavigator('stats-i-m-back')" aria-label="Next-phase">c. Search for you phone </button>
-<button class = "four-options" onclick="navigator('stats-i', 'q-i'); soloNavigator('stats-i-m-speed')" aria-label="Next-phase">d. Check your phone </button>
+<button class = "four-options" onclick="navigateForward(); soloNavigator('stats-i-m-health')" aria-label="Next-phase">a. Open the window and stretch </button>
+<button class = "four-options" onclick="navigateForward(); soloNavigator('stats-i-m-energy');" aria-label="Next-phase">b. Take a sip from the water bottle </button>
+<button class = "four-options" onclick="navigateForward(); soloNavigator('stats-i-m-back')" aria-label="Next-phase">c. Search for you phone </button>
+<button class = "four-options" onclick="navigateForward(); soloNavigator('stats-i-m-speed')" aria-label="Next-phase">d. Check your phone </button>
 
 </div>
    </div>
 
    <div class="afternoon-q-i hidden">
       <p>
-         You feel like you haven't moved from your chair for 6 hours. You're numb and can barely feel your body. Your mind is racing. You finally stand up and look out the window.. 
+         You feel like you haven't moved from your chair for 6 hours straight. You're numb and can barely feel your body. Your mind is racing. You finally stand up and look out the window.. 
       </p>
 
       <div class="four-options-container">
 
-<button class = "four-options" onclick="navigator('stats-i', 'q-i'); soloNavigator('stats-i-e-health')" aria-label="Next-phase">a. Go out for a run </button>
-<button class = "four-options" onclick="navigator('stats-i', 'q-i'); soloNavigator('stats-i-e-energy'); energyIncrease()" aria-label="Next-phase">b. Have a glass of water </button>
-<button class = "four-options" onclick="navigator('stats-i', 'q-i'); soloNavigator('stats-i-e-back')" aria-label="Next-phase">c. Have another coffee </button>
-<button class = "four-options" onclick="navigator('stats-i', 'q-i'); soloNavigator('stats-i-e-speed')" aria-label="Next-phase">d. Go to the library </button>
+<button class = "four-options" onclick="soloNavigator('stats-i-a-health'); navigateForward();" aria-label="Next-phase">a. Go out for a run </button>
+<button class = "four-options" onclick="soloNavigator('stats-i-a-energy'); navigateForward();" aria-label="Next-phase">b. Have a glass of water </button>
+<button class = "four-options" onclick="soloNavigator('stats-i-a-back'); navigateForward();" aria-label="Next-phase">c. Have another coffee </button>
+<button class = "four-options" onclick="soloNavigator('stats-i-a-speed'); navigateForward();" aria-label="Next-phase">d. Go to the library </button>
 
 </div>
    </div>
 
-   <div class="evening-q-i">
+   <div class="evening-q-i hidden">
       <p>The live stream you've been watching on Twitch isn't going anywhere. You get up from your sofa and turn off the TV. You go to the kitchen. As you open your fridge, a looming thought is haunting you. <br> You close the door and..</p>
 
 	       <div class="four-options-container">
 
-<button class = "four-options" onclick="navigator('stats-i', 'q-i'); soloNavigator('stats-i-e-health')" aria-label="Next-phase">a. Ignore the mind. Reach for the hoummous</button>
-<button class = "four-options" onclick="navigator('stats-i', 'q-i'); soloNavigator('stats-i-e-energy'); energyIncrease()" aria-label="Next-phase">b. Go get some fresh air</button>
-<button class = "four-options" onclick="navigator('stats-i', 'q-i'); soloNavigator('stats-i-e-back')" aria-label="Next-phase">c. Search for you phone </button>
-<button class = "four-options" onclick="navigator('stats-i', 'q-i'); soloNavigator('stats-i-e-speed')" aria-label="Next-phase">d. Clean your room </button>
+<button class = "four-options" onclick="navigateForward(); soloNavigator('stats-i-e-health');" aria-label="Next-phase">a. Ignore the mind. Reach for the hoummous</button>
+<button class = "four-options" onclick="navigateForward(); soloNavigator('stats-i-e-energy');" aria-label="Next-phase">b. Go get some fresh air</button>
+<button class = "four-options" onclick="navigateForward(); soloNavigator('stats-i-e-back');" aria-label="Next-phase">c. Search for you phone </button>
+<button class = "four-options" onclick="navigateForward(); soloNavigator('stats-i-e-speed');" aria-label="Next-phase">d. Clean your room </button>
 
 </div>
    </div>
@@ -172,26 +172,28 @@ C.End
 
 <!-- 4.Stats-i=========================================================================================== -->
 <section id="Stats-i" class="hidden">
+
    <div class="morning-stats-i hidden">
-      <p class="hidden" id="stats-i-m-health">You open the window. The air is crisp. You take the yoga mat from under the bed and begin to <em>stretch.</em> This feels great. </em></p>
+      <p class="hidden" id="stats-i-m-health">You open the window. The air is crisp. You take the yoga mat from under the bed and begin to <em>stretch.</em> This feels great. </p>
       <p class="hidden" id="stats-i-m-energy">This is refreshing. You feel <em>energized.</em> </p>
       <p class="hidden" id="stats-i-m-speed">You skim through notifications. Your internet bill is here! Luckily, you can pay it with credit. You pay it and notice the <em>speed increases</em> instantly. </p>
-      <div class="hidden" id="stats-i-m-back"><p>You pull the blinds back on. Complete darkness, falling asleep in 3...2...1... </p>
+      <p class="hidden" id="stats-i-m-back">You pull the blinds back on. Complete darkness, falling asleep in 3...2...1... </p>
    </div>
 
    <div class="afternoon-stats-i hidden">
+
       <p class="hidden" id="stats-i-a-health">It's actually a really nice day. You feel like you just got back in a body. This feels amazing and <em>improves your condition.</em> </p>
       <p class="hidden" id="stats-i-a-energy">Oumph! Seems like you were dehydrated. You're coming back to life. You feel <em>energised.</em> </p>
       <p class="hidden" id="stats-i-a-speed">You get to the local library. There's many people here just like you. You pull out your laptop and open Sublime. The <em>internet</em> connection here is great! </p>
-      <div class="hidden" id="stats-i-a-back"><p>You can't recall if this was your 4th of 5th of the day. You feel numb </p>
+      <p class="hidden" id="stats-i-a-back">You can't recall if this was your 4th of 5th of the day. You feel numb </p>
    </div>
 
    <div class="evening-stats-i">
-      <p class="hidden" id="stats-i-health">That was much needed. You feel <em>replenished.</em></p>
-	   <p class="hidden" id="stats-i-energy">You go outside. It's dark. You can feel the cool air on your skin. It fills you with <em>energy.</em></p>
-	   <p class="hidden" id="stats-i-speed">The pile of things next to you is now getting smaller and smaller. Underneath all the magazines - a black flash drive with a blue label on it. You can't figure out what it is. You plug it in. Your <em>internet speed</em> increases instantly! </p>
-	   <div class="hidden" id="stats-i-back"><p>You find your phone between cushions on the sofa. No notifications. You feel like you’re stuck in a loop.</p>
-      </div>
+      <p class="hidden" id="stats-i--e-health">That was much needed. You feel <em>replenished.</em></p>
+	   <p class="hidden" id="stats-i--e-energy">You go outside. It's dark. You can feel the cool air on your skin. It fills you with <em>energy.</em></p>
+	   <p class="hidden" id="stats-i--e-speed">The pile of things next to you is now getting smaller and smaller. Underneath all the magazines - a black flash drive with a blue label on it. You can't figure out what it is. You plug it in. Your <em>internet speed</em> increases instantly! </p>
+	   <p class="hidden" id="stats-i--e-back">You find your phone between cushions on the sofa. No notifications. You feel like you’re stuck in a loop.</p>
+      
    </div>
    
 </section>

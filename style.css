@@ -387,17 +387,22 @@ nav a:hover{
 /*========================RESPONSIVE===============*/
 
 @media (max-width : 1400px ){
-  main {
-    width: 900px;
-  }
-  main h1 {
+   h1 {
     font-size: 4em ;
+     margin-top: 1em;
   }
-  main h2 {
+   h2 {
     font-size:2em ;
   }
-  main p {
+   p {
     font-size: 1.5em;
+    margin-top: 5em;
+  }
+  .logos {
+    margin-top: 1em;
+  }
+  .starts{
+    margin-top: 1.3em;
   }
   .four-options {
     font-size: 0.8em;
