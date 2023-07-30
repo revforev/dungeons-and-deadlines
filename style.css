@@ -60,7 +60,6 @@ body {
     font-size: 1.2em;
     line-height: 1.4;
     text-align: left;
-    padding: 0 5vw 10vw 5vw;
     color: black;
     margin-top: 1em;
     padding: 1em;
@@ -154,6 +153,7 @@ h1 {
     margin-bottom: 5px;
 	display: block;
 	margin-left: 180px;
+	margin-top: 150px;
 	
 }
 h2 {
@@ -177,6 +177,8 @@ p {
 	text-align: left;
 	display: block;
 	margin: 0 auto;
+	margin-top: 200px;
+	
 }
 
 /*=====================INTERACT==========================*/
@@ -186,7 +188,7 @@ p {
 }
 
 .hidden {
-	display: none;
+	display: none !important;
 }
 
 
@@ -194,6 +196,7 @@ p {
 button {
   display: block;
   margin: 0 auto;
+	background-color: white;
 }
 
 
@@ -241,6 +244,40 @@ button {
   height: 8.5rem; 
 /*	!Make responsive, the start button!*/
 }
+[data-stat-type] {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top;
+	  width: 70px;
+  height: 145px;
+  color:black;
+	font-family: JetBrains;
+	font-weight: 600;
+  font-size: 16px;
+  text-align: center; 
+  outline: none;
+  cursor: pointer;
+  border: none;
+	margin: 7px;
+	margin-top:4px;
+}
+
+/* Target specific stat types and apply different styles */
+[data-stat-type="coins"] {
+	background-image: url('images/icons/coins.png');
+}
+
+[data-stat-type="fitness"] {
+	background-image: url('images/icons/fitness.png');
+}
+
+[data-stat-type="energy"] {
+	background-image: url('images/icons/coffee.png');
+}
+
+[data-stat-type="speed"] {
+	background-image: url('images/icons/internet.png');
+}
 
 .undo {
 	background-image: url('images/undo-button.png');
@@ -253,7 +290,6 @@ button {
   color:black;
 	font-family: JetBrains;
 	font-weight: 600;
-	background-color: #3E3E40;
   font-size: 16px;
   text-align: center; 
   outline: none;
@@ -268,9 +304,18 @@ button {
 .undo-restart-container {
   width: 200px;
   position: fixed;
-  top: 0;
+  top: -75px;
   right: 50px;
   
+  
+}
+
+.stats-bar {
+  width: 260px;
+  position: fixed;
+  top: 15px;
+  left: 50px;
+  display: flex;
   
 }
 .two-options {
@@ -320,6 +365,64 @@ main {
   padding: 100px;
 	
 }
+
+/*============================================================================================================
+====MAP======================================================================================================
+==============================================================================================================*/
+.map {
+    display: flex;
+align-content: center;
+    justify-content: space-between;
+  align-items: center;
+    margin: 0 auto;
+        width: 1000px;
+    margin-top:5%;
+    flex-direction: column;
+}
+.stage {
+    display: flex;
+align-content: center;
+    justify-content: space-between;
+  align-items: center;
+}
+
+/*how do I stack Stages one on top of the other ?*/
+
+
+.map-buttons {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  list-style: none;
+  margin: 60px 120px 60px 120px;
+  background-image: url('images/icons/laptop.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top;
+  background-color: transparent;
+  /* You can adjust the following properties as needed */
+  width: 50px;
+  height: 50px; 
+}
+.locked{
+  background-image: url('images/icons/locked.png');
+  cursor:not-allowed;
+}
+
+.legend {
+	width: 330px;
+  position: absolute;
+  top: 350px;
+  right: 85px;
+  display: block;
+}
+.paths {
+	width: 870px;
+	display: block;
+	position: absolute;
+	top:130px;
+}
+
 /*=============NAVIGATION===========================*/
 
 nav ul {

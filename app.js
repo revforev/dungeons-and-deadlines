@@ -112,7 +112,7 @@ const coinsEl = document.getElementById("coins");
 let currentPhaseIndex = 0; // Initialize the current phase index to 0 (first phase)
 
   function navigateForward() {
-	let phases = ["innit", "Logo", "Greeting", "Q-i", "Stats-i", "Briefing", "Instructions", "Map-1", "Stage-1-X", "Stats-1-X", "Map-2", "Stage-2-X", "Stats-2-X", "Map-3", "Shop-3-X", "Stats-3-X", "Map-4", "Stage-4-X", "Stats-4-X", "Map-5", "Stage-5-X", "Stats-4-X", "Map-6", "Stage-6-X", "Stats-6-X", "Map-7", "Stage-7-X", "Stats-7-X", "Times-Up", "Wakeup", "Ending", "Postlude", "Credits"];
+	let phases = ["innit", "Logo", "Greeting", "Q-i", "Stats-i", "Briefing", "Instructions", "Map", "Stage-1-X", "Stats-1-X", "Map", "Stage-2-X", "Stats-2-X", "Map", "Shop-3-X", "Stats-3-X", "Map", "Stage-4-X", "Stats-4-X", "Map", "Stage-5-X", "Stats-5-X", "Map", "Stage-6-X", "Stats-6-X", "Map", "Stage-7-X", "Stats-7-X", "Times-Up", "Wakeup", "Ending", "Postlude", "Credits"];
 
     // Get the current phase element from the DOM based on its ID
     let currentPhaseId = phases[currentPhaseIndex];
@@ -140,7 +140,7 @@ let currentPhaseIndex = 0; // Initialize the current phase index to 0 (first pha
   }
 
   function navigateBackward() {
-	let phases = ["innit", "Logo", "Greeting", "Q-i", "Stats-i", "Briefing", "Instructions", "Map-1", "Stage-1-X", "Stats-1-X", "Map-2", "Stage-2-X", "Stats-2-X", "Map-3", "Shop-3-X", "Stats-3-X", "Map-4", "Stage-4-X", "Stats-4-X", "Map-5", "Stage-5-X", "Stats-4-X", "Map-6", "Stage-6-X", "Stats-6-X", "Map-7", "Stage-7-X", "Stats-7-X", "Times-Up", "Wakeup", "Ending", "Postlude", "Credits"];
+	let phases = ["innit", "Logo", "Greeting", "Q-i", "Stats-i", "Briefing", "Instructions", "Map", "Stage-1-X", "Stats-1-X", "Map", "Stage-2-X", "Stats-2-X", "Map", "Shop-3-X", "Stats-3-X", "Map", "Stage-4-X", "Stats-4-X", "Map", "Stage-5-X", "Stats-4-X", "Map", "Stage-6-X", "Stats-6-X", "Map", "Stage-7-X", "Stats-7-X", "Times-Up", "Wakeup", "Ending", "Postlude", "Credits"];
 
     // Get the current phase element from the DOM based on its ID
     let currentPhaseId = phases[currentPhaseIndex];
@@ -187,4 +187,736 @@ function reloadPage() {
   location.reload();
 }
 
+
+//STATS========================================================================================================================================================================
+ let stats = {
+    coins: 0,
+    fitness: 0,
+    energy: 0,
+    speed: 0,
+  };
+
+  function updateStat(statType) {
+    const statButton = document.querySelector(`[data-stat-type="${statType}"]`);
+    statButton.textContent = stats[statType].toString();
+  }
+
+  // Call the function initially for each stat type to set the button content to the initial value
+  for (let statType in stats) {
+    updateStat(statType);
+  }
+
+  // Function to add stats of a specific type
+  function addStats(statType, amount) {
+    stats[statType] += amount;
+    updateStat(statType);
+  }
+
+  // Function to spend stats of a specific type
+  function spendStats(statType, amount) {
+    if (stats[statType] >= amount) {
+      stats[statType] -= amount;
+      updateStat(statType);
+    } else {
+      console.log("Not enough `${statType}`!");
+    }
+  }
+
+
+// =====================================MAP==================================================================
+let quiz1 = [
+  {
+    question: "What does HTML stand for?",
+    options: [
+      "Hyperlinks and Text Markup Language",
+      "Home Tool Markup Language",
+      "Hyper Text Markup Language",
+      "Hyper Text Makeup Language",
+    ],
+    correctAnswerIndex: 2,
+  },
+  {
+    question: "Which element is used to create a hyperlink in HTML?",
+    options: [
+      "<link>",
+      "<a>",
+      "<p>",
+      "<div>",
+    ],
+    correctAnswerIndex: 1,
+  },
+  {
+    question: "What is the correct HTML element for inserting a line break?",
+    options: [
+      "<br>",
+      "<hr>",
+      "<break>",
+      "<line>",
+    ],
+    correctAnswerIndex: 0,
+  },
+  {
+    question: "Which attribute is used to define inline styles in HTML?",
+    options: [
+      "class",
+      "style",
+      "id",
+      "src",
+    ],
+    correctAnswerIndex: 1,
+  },
+  {
+    question: "Which tag is used to define an unordered list in HTML?",
+    options: [
+      "<ul>",
+      "<ol>",
+      "<li>",
+      "<dl>",
+    ],
+    correctAnswerIndex: 0,
+  },
+  {
+    question: "Which attribute is used to specify an external CSS file in HTML?",
+    options: [
+      "style",
+      "href",
+      "src",
+      "class",
+    ],
+    correctAnswerIndex: 1,
+  },
+  {
+    question: "What is the correct HTML element for the largest heading?",
+    options: [
+      "<heading>",
+      "<h1>",
+      "<h6>",
+      "<h2>",
+    ],
+    correctAnswerIndex: 1,
+  },
+  {
+    question: "Which attribute is used to specify a unique identifier for an element in HTML?",
+    options: [
+      "class",
+      "id",
+      "important",
+      "spec",
+    ],
+    correctAnswerIndex: 1,
+  },
+  {
+    question: "How do you create a comment in HTML?",
+    options: [
+      "<!-- This is a comment -->",
+      "// This is a comment",
+      "/* This is a comment */",
+      "** This is a comment **",
+    ],
+    correctAnswerIndex: 0,
+  },
+  {
+    question: "Which element is used to define a table row in HTML?",
+    options: [
+      "<table>",
+      "<th>",
+      "<tr>",
+      "<td>",
+    ],
+    correctAnswerIndex: 2,
+  },
+  {
+    question: "What does CSS stand for?",
+    options: [
+      "Creative Style Sheets",
+      "Cascading Style Sheets",
+      "Computer Style Sheets",
+      "Colorful Style Sheets",
+    ],
+    correctAnswerIndex: 1,
+  },
+  {
+    question: "Which CSS property is used to specify the background color of an element?",
+    options: [
+      "background-color",
+      "background",
+      "color",
+      "bg-color",
+    ],
+    correctAnswerIndex: 0,
+  },
+  {
+    question: "Which CSS property is used to control the size of an element's font?",
+    options: [
+      "text-size",
+      "font-size",
+      "size",
+      "font-style",
+    ],
+    correctAnswerIndex: 1,
+  },
+  {
+    question: "What is the correct CSS syntax to select an element with the class 'example'?",
+    options: [
+      "#example",
+      ".example",
+      "[example]",
+      "@example",
+    ],
+    correctAnswerIndex: 1,
+  },
+  {
+    question: "What is the correct CSS syntax to select all <p> elements inside a <div> element?",
+    options: [
+      "div > p",
+      "p div",
+      "div p",
+      "p + div",
+    ],
+    correctAnswerIndex: 2,
+  },
+  {
+    question: "Which CSS property is used to specify the spacing between lines of text?",
+    options: [
+      "line-height",
+      "text-spacing",
+      "letter-spacing",
+      "word-spacing",
+    ],
+    correctAnswerIndex: 0,
+  },
+  {
+    question: "What is the correct CSS syntax to set the text color of an element to red?",
+    options: [
+      "background-color: red;",
+      "color: red;",
+      "font-color: red;",
+      "colour: red;",
+    ],
+    correctAnswerIndex: 1,
+  },
+  {
+    question: "Which CSS property is used to make an element bold?",
+    options: [
+      "bold",
+      "text-decoration",
+      "font-style",
+      "font-weight",
+    ],
+    correctAnswerIndex: 3,
+  },
+  {
+    question: "What is the correct CSS syntax to set the width and height of an element?",
+    options: [
+      "size: width height;",
+      "width: value; height: value;",
+      "dimension: value;",
+      "scale: value;",
+    ],
+    correctAnswerIndex: 1,
+  },
+  {
+    question: "Which CSS property is used to add a shadow effect to an element?",
+    options: [
+      "box-shadow",
+      "shadow",
+      "text-shadow",
+      "effect-shadow",
+    ],
+    correctAnswerIndex: 0,
+  }
+];
+
+
+
+let quiz2 = [
+    {
+      question: "What is the purpose of the HTML <meta> tag?",
+      options: [
+        "To define a hyperlink within the document",
+        "To specify the character encoding of the HTML document",
+        "To create a table within the document",
+        "To define a section of content that is independent of the document flow"
+      ],
+      correctAnswerIndex: 1
+    },
+    {
+      question: "What is the purpose of the HTML <canvas> element?",
+      options: [
+        "To display scalable vector graphics",
+        "To create interactive web applications",
+        "To embed multimedia content",
+        "To draw graphics and animations programmatically"
+      ],
+      correctAnswerIndex: 3
+    },
+    {
+      question: "Which attribute is used to provide alternative text for images in HTML?",
+      options: [
+        "title",
+        "src",
+        "alt",
+        "description"
+      ],
+      correctAnswerIndex: 2
+    },
+    {
+      question: "Which HTML element is used to group related form elements together?",
+      options: [
+        "<fieldset>",
+        "<group>",
+        "<formset>",
+        "<formgroup>"
+      ],
+      correctAnswerIndex: 0
+    },
+    {
+      question: "What does the HTML5 <article> element represent?",
+      options: [
+        "A section of selected news articles",
+        "A self-contained composition in a document, such as a blog post or news story",
+        "A semantic element used for emphasis",
+        "A block of code or programming instructions"
+      ],
+      correctAnswerIndex: 1
+    },
+    {
+      question: "How do you create a numbered list with custom styles in HTML?",
+      options: [
+        "Use the <ol> element and add custom attributes for styling",
+        "Use the <ul> element and manually add numbers with CSS pseudo-elements",
+        "Use the <ul> element and apply CSS classes to each list item for custom styling",
+        "Use the <ol> element with CSS to style/customize the numbering"
+      ],
+      correctAnswerIndex: 3
+    },
+    {
+      question: "What is the purpose of the HTML <aside> element?",
+      options: [
+        "To define a section of content that is tangentially related to the main content",
+        "To create a container for a footer or bottom section of a web page",
+        "To specify a list of options for the user to choose from",
+        "To mark up a citation or reference within the content"
+      ],
+      correctAnswerIndex: 0
+    },
+    {
+      question: "What is the purpose of the HTML <nav> element?",
+      options: [
+        "To define a section of content that contains metadata for the web page",
+        "To display a header at the top of the web page",
+        "To define a section of navigation links",
+        "To create a block of quoted text"
+      ],
+      correctAnswerIndex: 2
+    },
+    {
+      question: "Which attribute is used to specify the relationship between the current document and the linked document in HTML?",
+      options: [
+        "rel",
+        "href",
+        "target",
+        "type"
+      ],
+      correctAnswerIndex: 0
+    },
+    {
+      question: "What does the HTML <datalist> element represent?",
+      options: [
+        "A list of predefined options for an input element",
+        "A table of data in an unordered list",
+        "A list of related articles or blog posts",
+        "A block of code or programming instructions"
+      ],
+      correctAnswerIndex: 0
+    },
+    {
+      question: "Which CSS property is used to change the background color of an element?",
+      options: [
+        "bgcolor",
+        "background",
+        "color",
+        "background-color"
+      ],
+      correctAnswerIndex: 3
+    },
+    {
+      question: "How do you select all elements with the class \"example\" in CSS?",
+      options: [
+        ".example",
+        "#example",
+        "@example",
+        "*example"
+      ],
+      correctAnswerIndex: 0
+    },
+    {
+      question: "Which CSS property is used to control the spacing between lines of text?",
+      options: [
+        "text-indent",
+        "line-height",
+        "letter-spacing",
+        "word-spacing"
+      ],
+      correctAnswerIndex: 1
+    },
+    {
+      question: "What does the CSS property \"float: left;\" do?",
+      options: [
+        "Moves the element to the left side of the page",
+        "Aligns the element to the left within its parent container",
+        "Makes the element float above other elements",
+        "Removes the element from the normal document flow"
+      ],
+      correctAnswerIndex: 0
+    },
+    {
+      question: "How do you add a drop shadow effect to an element in CSS?",
+      options: [
+        "text-shadow: 2px 2px 2px #000;",
+        "shadow: drop 2px 2px 2px #000;",
+        "effect: drop-shadow(2px 2px 2px #000);",
+        "box-shadow: 2px 2px 2px #000;"
+      ],
+      correctAnswerIndex: 3
+    },
+    {
+      question: "Which CSS selector will select only the first child element of its parent?",
+      options: [
+        ":first-of-type",
+        ":nth-child(1)",
+        ":first-child",
+        ":nth-of-type(1)"
+      ],
+      correctAnswerIndex: 2
+    },
+    {
+      question: "What does the CSS property \"box-sizing: border-box;\" do?",
+      options: [
+        "Includes padding and border in the element's total width and height",
+        "Sets the box model to use the content-box sizing",
+        "Adjusts the element's dimensions based on its content",
+        "Removes the box model from the element"
+      ],
+      correctAnswerIndex: 0
+    },
+    {
+      question: "How can you add a transition effect to an element in CSS?",
+      options: [
+        "animation: name duration timing-function;",
+        "transition: property duration timing-function;",
+        "effect: transition property duration timing-function;",
+        "animate: property duration timing-function;"
+      ],
+      correctAnswerIndex: 1
+    },
+    {
+      question: "Which CSS property is used to change the font weight of an element?",
+      options: [
+        "font-bold",
+        "text-weight",
+        "font-style",
+        "font-weight"
+      ],
+      correctAnswerIndex: 3
+    },
+    {
+      question: "What does the CSS property \"pointer-events: none;\" do?",
+      options: [
+        "Changes the cursor style to \"none\"",
+        "Disables mouse events on the element",
+        "Makes the element not visible on the web page",
+        "Makes the element non-clickable"
+      ],
+      correctAnswerIndex: 1
+    }
+  ];
+
+
+    
+let quiz3 = [
+{
+    question: "What is JavaScript primarily used for?",
+    options: [
+      "Storing data in databases",
+      "Adding interactivity to web pages",
+      "Creating CSS styles",
+      "Defining the structure of web pages"
+    ],
+    correctAnswerIndex: 0
+  },
+ {
+    question: "How did you use to declare a variable in JavaScript before ES6 (2016)?",
+    options: [
+      "const myVariable;",
+      "variable myVariable;",
+      "let myVariable;",
+      "var myVariable;"
+    ],
+    correctAnswerIndex: 3
+  },
+ {
+    question: "Which keyword is used to define a function in JavaScript?",
+    options: [
+      "f",
+      "def",
+      "function",
+      "func"
+    ],
+    correctAnswerIndex: 2
+  },
+{
+    question: "What is the correct syntax for a single-line comment in JavaScript?",
+    options: [
+      "a) /* This is a comment */",
+      "b) <!-- This is a comment -->",
+      "c) // This is a comment",
+      "d) -- This is a comment --"
+    ],
+    correctAnswerIndex: 2
+  },
+  {
+    question: "Which operator is used to assign a value to a variable in JavaScript?",
+    options: [
+      ":",
+      "==",
+      "===",
+      "="
+    ],
+    correctAnswerIndex: 3
+  },
+ {
+    question: "What is the correct way to write an if statement in JavaScript?",
+    options: [
+      "{ // code } if (condition)",
+      "if { // code } (condition)",
+      "if (condition) { // code }",
+      "(condition) { // code } if"
+    ],
+    correctAnswerIndex: 2
+  },
+ {
+    question: "How do you write \"Hello, World!\" to the console in JavaScript?",
+    options: [
+      "print(\"Hello, World!\");",
+      "console.print(\"Hello, World!\");",
+      "console.write(\"Hello, World!\");",
+      "console.log(\"Hello, World!\");"
+    ],
+    correctAnswerIndex: 3
+  },
+ {
+    question: "Which method is used to convert a string to an integer in JavaScript?",
+    options: [
+      "parseInt()",
+      "toString()",
+      "parseFloat()",
+      "toInteger()"
+    ],
+    correctAnswerIndex: 0
+  },
+ {
+    question: "What is the result of the expression: 5 + \"2\" in JavaScript?",
+    options: [
+      "NaN",
+      "7",
+      "52",
+      "\"52\""
+    ],
+    correctAnswerIndex: 3
+  },
+ {
+    question: "How do you find the length of an array in JavaScript?",
+    options: [
+      "myArray.length()",
+      "myArray.length",
+      "myArray.size()",
+      "myArray.size"
+    ],
+    correctAnswerIndex: 1
+  }
+];
+
+
+    
+let quiz4 = {
+  set1: {
+    question: "Which method is used to add elements to the end of an array in JavaScript?",
+    options: [
+      "shift()",
+      "pop()",
+      "push()",
+      "unshift()"
+    ],
+    correctAnswerIndex: 2
+  },
+  set2: {
+    question: "How do you concatenate two strings in JavaScript?",
+    options: [
+      "a) string1 + string2",
+      "b) string1.concat(string2)",
+      "c) concat(string1, string2)",
+      "d) join(string1, string2)"
+    ],
+    correctAnswerIndex: 3
+  },
+  set3: {
+    question: "What is the result of the expression: 10 % 3 in JavaScript?",
+    options: [
+      "a) 1",
+      "b) 0",
+      "c) 3",
+      "d) 10"
+    ],
+    correctAnswerIndex: 2
+  },
+  set4: {
+    question: "Which method is used to remove the last element from an array in JavaScript?",
+    options: [
+      "a) pop()",
+      "b) push()",
+      "c) shift()",
+      "d) unshift()"
+    ],
+    correctAnswerIndex: 0
+  },
+  set5: {
+    question: "What does the typeof operator return for an array?",
+    options: [
+      "a) \"object\"",
+      "b) \"array\"",
+      "c) \"undefined\"",
+      "d) \"function\""
+    ],
+    correctAnswerIndex: 0
+  },
+  set6: {
+    question: "How do you access the value of a property in an object in JavaScript?",
+    options: [
+      "a) object.property",
+      "b) object[\"property\"]",
+      "c) object.getProperty()",
+      "d) getProperty(object)"
+    ],
+    correctAnswerIndex: 1
+  },
+  set7: {
+    question: "Which method is used to convert a string to lowercase in JavaScript?",
+    options: [
+      "a) toLowerCase()",
+      "b) toUpperCase()",
+      "c) caseLower()",
+      "d) caseUpper()"
+    ],
+    correctAnswerIndex: 0
+  },
+  set8: {
+    question: "What does the Math.random() function in JavaScript return?",
+    options: [
+      "a) A random number between 0 and 1",
+      "b) A random integer",
+      "c) The value of π (pi)",
+      "d) The square root of a number"
+    ],
+    correctAnswerIndex: 0
+  },
+  set9: {
+    question: "Which method is used to convert a number to a string in JavaScript?",
+    options: [
+      "a) convertString()",
+      "b) toNumber()",
+      "c) parseString()",
+      "d) toString()"
+    ],
+    correctAnswerIndex: 3
+  },
+  set10: {
+    question: "What is the result of the expression: true && false in JavaScript?",
+    options: [
+      "a) false",
+      "b) true",
+      "c) undefined",
+      "d) null"
+    ],
+    correctAnswerIndex: 0
+  }
+};
+
+    
+    
+// let mysteryQuiz = [
+//       {			 //css inject background/sau si mai simplu toggle class of phone
+//         id: "mystery-1",
+//         question: "Ring ring! You feel your phone vibrating in the pocket. It's someone who you met during a night out last weekend. Pick up the call?",
+//         options: [
+//           "a) Option A",
+//           "b) Option B",
+//           "c) Option C",
+//           "d) Option D"
+//         ],
+//         correctAnswerIndex: 0
+//       },
+//       {
+//         id: "mystery-2",
+//         question: "Which element has an unknown chemical symbol?",
+//         options: [
+//           "a) Option A",
+//           "b) Option B",
+//           "c) Option C",
+//           "d) Option D"
+//         ],
+//         correctAnswerIndex: 1
+//       },
+//       {
+//         id: "mystery-3",
+//         question: "What is the answer to the unknown question?",
+//         options: [
+//           "a) Option A",
+//           "b) Option B",
+//           "c) Option C",
+//           "d) Option D"
+//         ],
+//         correctAnswerIndex: 2
+//       }
+//     ];
+
+// let mysteryQuizOptions = [
+//       {
+//         id: "mystery-1",
+//         question: "You pick up the call and hear a slender voice at the other end of the line : 'heeeeeeeeeeey! hows it going? it's been aaaaaages. We need to catch up tonight most defo! There's a sick party going on in Shoreditch. Feel free to join me, come at mine 6 ish",
+//         options: [
+//           "I will be there most defo. See you soon!",
+//           "Can't make it, sorry - got some work to do. We can meet next week?",
+//           "How about we meet in a pub instead? I can't be out for too long tonight",
+//           "*Hang up*"
+//         ],
+//         correctAnswerIndex: 0
+//         // Call A:0
+//         // Call A:1
+//         // Call A:2
+//         // Call A:3
+//       },
+//       {
+//         id: "mystery-2",
+//         question: "Which element has an unknown chemical symbol?",
+//         options: [
+//           "a) Option A",
+//           "b) Option B",
+//           "c) Option C",
+//           "d) Option D"
+//         ],
+//         correctAnswerIndex: 1
+//       },
+//       {
+//         id: "mystery-3",
+//         question: "What is the answer to the unknown question?",
+//         options: [
+//           "a) Option A",
+//           "b) Option B",
+//           "c) Option C",
+//           "d) Option D"
+//         ],
+//         correctAnswerIndex: 2
+//       }
+//     ];
 

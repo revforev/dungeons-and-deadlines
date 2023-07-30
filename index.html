@@ -68,9 +68,16 @@ C.End
 </div>
 -->
 
-<div class="undo-restart-container hidden">
+<div class="undo-restart-container hidden" id="undoandrestart">
 <button class="undo" id = "undo-1" onclick="navigateBackward()" aria-label="Previous-phase">Undo</button>
 <button class="undo" id = "restart" onclick="reloadPage()" aria-label="Restart Game">Restart</button>
+</div>
+	   
+<div class="stats-bar hidden" id="statsbar">
+<button data-stat-type = "coins" aria-label="Coins Icon - A simple coin symbol"> </button>
+<button data-stat-type = "fitness" aria-label="Fitness Icon - A flexing muscle icon"> </button>
+<button data-stat-type = "energy" aria-label="Energy Icon - A simple cup of coffee made into an icon"> </button>
+<button data-stat-type = "speed" aria-label="Speed Symbol - Internet international symbol of the globe with a mouse cursor in the bottom right corner"> </button>
 </div>
 <!-- 0. Innit====================================================================================-->
 <section id	= "innit">
@@ -176,8 +183,15 @@ C.End
    <div class="morning-stats-i hidden">
       <p class="hidden" id="stats-i-m-health">You open the window. The air is crisp. You take the yoga mat from under the bed and begin to <em>stretch.</em> This feels great. </p>
       <p class="hidden" id="stats-i-m-energy">This is refreshing. You feel <em>energized.</em> </p>
-      <p class="hidden" id="stats-i-m-speed">You skim through notifications. Your internet bill is here! Luckily, you can pay it with credit. You pay it and notice the <em>speed increases</em> instantly. </p>
+      <p class="hidden" id="stats-i-m-speed">You skim through notifications. Your internet bill is here! Luckily, you can pay it with the credit you have aquired. You notice the <em>speed increases</em> instantly. </p>
       <p class="hidden" id="stats-i-m-back">You pull the blinds back on. Complete darkness, falling asleep in 3...2...1... </p>
+
+      <div class="two-options-container">
+<!--       Proceed to next phase-->
+<button class= "two-options" onclick="navigateForward()" aria-label="Next-phase">Yes</button>
+<!--     Undo-->
+<button class= "two-options" onclick="reloadPage()" aria-label="Previous-phase">No</button>
+      </div>
    </div>
 
    <div class="afternoon-stats-i hidden">
@@ -186,14 +200,28 @@ C.End
       <p class="hidden" id="stats-i-a-energy">Oumph! Seems like you were dehydrated. You're coming back to life. You feel <em>energised.</em> </p>
       <p class="hidden" id="stats-i-a-speed">You get to the local library. There's many people here just like you. You pull out your laptop and open Sublime. The <em>internet</em> connection here is great! </p>
       <p class="hidden" id="stats-i-a-back">You can't recall if this was your 4th of 5th of the day. You feel numb </p>
+
+
+      <div class="two-options-container">
+<!--       Proceed to next phase-->
+<button class= "two-options" onclick="navigateForward()" aria-label="Next-phase">Yes</button>
+<!--     Undo-->
+<button class= "two-options" onclick="reloadPage()" aria-label="Previous-phase">No</button>
+      </div>
    </div>
 
-   <div class="evening-stats-i">
-      <p class="hidden" id="stats-i--e-health">That was much needed. You feel <em>replenished.</em></p>
-	   <p class="hidden" id="stats-i--e-energy">You go outside. It's dark. You can feel the cool air on your skin. It fills you with <em>energy.</em></p>
-	   <p class="hidden" id="stats-i--e-speed">The pile of things next to you is now getting smaller and smaller. Underneath all the magazines - a black flash drive with a blue label on it. You can't figure out what it is. You plug it in. Your <em>internet speed</em> increases instantly! </p>
-	   <p class="hidden" id="stats-i--e-back">You find your phone between cushions on the sofa. No notifications. You feel like you’re stuck in a loop.</p>
+   <div class="evening-stats-i hidden">
+      <p class="hidden" id="stats-i-e-health">That was much needed. You feel <em>replenished.</em></p>
+	   <p class="hidden" id="stats-i-e-energy">You go outside. It's dark. You can feel the cool air on your skin. It fills you with <em>energy.</em></p>
+	   <p class="hidden" id="stats-i-e-speed">The pile of things next to you is now getting smaller and smaller. Underneath all the magazines - a black flash drive with a blue label on it. You can't figure out what it is. You plug it in. Your <em>internet speed</em> increases instantly! </p>
+	   <p class="hidden" id="stats-i-e-back">You find your phone between cushions on the sofa. No notifications. You feel like you’re stuck in a loop.</p>
       
+      <div class="two-options-container">
+<!--       Proceed to next phase-->
+<button class= "two-options" onclick="navigateForward()" aria-label="Next-phase">Yes</button>
+<!--     Undo-->
+<button class= "two-options" onclick="reloadPage()" aria-label="Previous-phase">No</button>
+      </div>
    </div>
    
 </section>
@@ -205,204 +233,207 @@ Life's nice and simple. You haven't landed your first job, but your local fame
 attracts some freelancing work for you.
 The internet speed is rubbish. Parties are great. You're always on the road. 
 The only question is: can you pay the rent by the end of the week?</p>
+<div class="two-options-container">
+<!--       Proceed to next phase-->
+<button class= "two-options" onclick="navigateForward()" aria-label="Next-phase">Yes</button>
+<!--     Undo-->
+<button class= "two-options" onclick="reloadPage()" aria-label="Previous-phase">No</button>
+      </div>
 </section>
 
 <!-- 5b.Instructions===================================================================================== -->
 <section id="Instructions" class="hidden">
    <p>The rent is due in seven days! You need to get 10 coins for the rent. Each passed challenge will give out 3 coins. Good luck!</p>
-<p></p>
+   <div class="two-options-container">
+<!--       Proceed to next phase-->
+<button class= "two-options" onclick="navigateForward();  soloNavigator('statsbar'); soloNavigator('undoandrestart');" aria-label="Next-phase">Yes</button>
+<!--     Undo-->
+<button class= "two-options" onclick="reloadPage()" aria-label="Previous-phase">No</button>
+      </div>
+
 </section>
 	
-<!-- 6.Map-1============================================================================================= -->
-<section id="Map-1" class="hidden">
-   <img class="hidden" id="map" src="images/map.jpg">
+<!-- 6.Map============================================================================================= -->
+<section id="Map" class="map hidden" >
+		<img class="paths" src="images/svg/paths.png" alt="">
+      <img class="legend" src="images/legend.png" alt="">
+   <div class="stage" id = "Stage-1">
+   <button class = "map-buttons stage-1 deadline" id = "stage-1-a" onclick="navigateForward();" aria-label="One of the 21 playable levels, visually represented as a laptop, question mark or petrol station symbol according to the type of level as innitialized"> </button>
+   <button class = "map-buttons stage-1 deadline" id = "stage-1-b" onclick="navigateForward();" aria-label="One of the 21 playable levels, visually represented as a laptop, question mark or petrol station symbol according to the type of level as innitialized"> </button>
+   <button class = "map-buttons stage-1 deadline" id = "stage-1-c" onclick="navigateForward();" aria-label="One of the 21 playable levels, visually represented as a laptop, question mark or petrol station symbol according to the type of level as innitialized"> </button>
+      </div>
+
+   <div class="stage" id = "Stage-2">
+   <button class = "map-buttons stage-2 deadline locked" id = "stage-2-1" onclick="navigateForward();" aria-label="Start button, click to start the game!"> </button>
+   <button class = "map-buttons stage-2 deadline locked" id = "stage-2-2" onclick="navigateForward();" aria-label="Start button, click to start the game!"> </button>
+   <button class = "map-buttons stage-2 deadline locked" id = "stage-2-3" onclick="navigateForward();" aria-label="Start button, click to start the game!"> </button>
+      </div>   
+
+   <div class="stage" id = "Stage-3">
+   <button class = "map-buttons stage-3 deadline locked" id = "stage-3-1" onclick="navigateForward();" aria-label="Start button, click to start the game!"> </button>
+   <button class = "map-buttons stage-3 deadline locked" id = "stage-3-2" onclick="navigateForward();" aria-label="Start button, click to start the game!"> </button>
+   <button class = "map-buttons stage-3 deadline locked" id = "stage-3-3" onclick="navigateForward();" aria-label="Start button, click to start the game!"> </button>
+      </div>
+
+   <div class="stage" id = "Stage-4">
+   <button class = "map-buttons stage-4 deadline locked" id = "stage-4-1" onclick="navigateForward();" aria-label="Start button, click to start the game!"> </button>
+   <button class = "map-buttons stage-4 deadline locked" id = "stage-4-2" onclick="navigateForward();" aria-label="Start button, click to start the game!"> </button>
+   <button class = "map-buttons stage-4 deadline locked" id = "stage-4-3" onclick="navigateForward();" aria-label="Start button, click to start the game!"> </button>
+      </div>
+   
+   <div class="stage" id = "Stage-5">
+   <button class = "map-buttons stage-5 deadline locked" id = "stage-5-1" onclick="navigateForward();" aria-label="Start button, click to start the game!"> </button>
+   <button class = "map-buttons stage-5 deadline locked" id = "stage-5-2" onclick="navigateForward();" aria-label="Start button, click to start the game!"> </button>
+   <button class = "map-buttons stage-5 deadline locked" id = "stage-5-3" onclick="navigateForward();" aria-label="Start button, click to start the game!"> </button>
+      </div>
+
+   <div class="stage" id = "Stage-6">
+   <button class = "map-buttons stage-6 deadline locked" id = "stage-6-1" onclick="navigateForward();" aria-label="Start button, click to start the game!"> </button>
+   <button class = "map-buttons stage-6 deadline locked" id = "stage-6-2" onclick="navigateForward();" aria-label="Start button, click to start the game!"> </button>
+   <button class = "map-buttons stage-6 deadline locked" id = "stage-6-3" onclick="navigateForward();" aria-label="Start button, click to start the game!"> </button>
+      </div>
+
+   <div class="stage" id = "Stage-7">
+   <button class = "map-buttons stage-7 deadline locked" id = "stage-7-1" onclick="navigateForward();" aria-label="Start button, click to start the game!"> </button>
+   <button class = "map-buttons stage-7 deadline locked" id = "stage-7-2" onclick="navigateForward();" aria-label="Start button, click to start the game!"> </button>
+   <button class = "map-buttons stage-7 deadline locked" id = "stage-7-3" onclick="navigateForward();" aria-label="Start button, click to start the game!"> </button>
+      </div>
+
+      </section>
+
+    <!-- Stage 1 -->
+    <section id="Stage-1" class="hidden">
+      <p id="stage-1-q"></p>
+      <div class="four-options-container">
+          <button id="stage-1-a1" class="four-options" onclick="navigateForward()" aria-label="Button for answering the question on click."></button>
+          <button id="stage-1-a2" class="four-options" onclick="navigateForward()" aria-label="Button for answering the question on click."></button>
+          <button id="stage-1-a3" class="four-options" onclick="navigateForward()" aria-label="Button for answering the question on click."></button>
+          <button id="stage-1-a4" class="four-options" onclick="navigateForward()" aria-label="Button for answering the question on click."></button>
+      </div>
+  </section>
+
+  <!-- Stage 2 -->
+  <section id="Stage-2" class="hidden">
+      <p id="stage-2-q"></p>
+      <div class="four-options-container">
+          <button id="stage-2-a1" class="four-options" onclick="navigateForward()" aria-label="Button for answering the question on click."></button>
+          <button id="stage-2-a2" class="four-options" onclick="navigateForward()" aria-label="Button for answering the question on click."></button>
+          <button id="stage-2-a3" class="four-options" onclick="navigateForward()" aria-label="Button for answering the question on click."></button>
+          <button id="stage-2-a4" class="four-options" onclick="navigateForward()" aria-label="Button for answering the question on click."></button>
+      </div>
+  </section>
+
+  <!-- Stage 3 -->
+  <section id="Stage-3" class="hidden">
+      <p id="stage-3-q"></p>
+      <div class="four-options-container">
+          <button id="stage-3-a1" class="four-options" onclick="navigateForward()" aria-label="Button for answering the question on click."></button>
+          <button id="stage-3-a2" class="four-options" onclick="navigateForward()" aria-label="Button for answering the question on click."></button>
+          <button id="stage-3-a3" class="four-options" onclick="navigateForward()" aria-label="Button for answering the question on click."></button>
+          <button id="stage-3-a4" class="four-options" onclick="navigateForward()" aria-label="Button for answering the question on click."></button>
+      </div>
+  </section>
+
+  <!-- Stage 4 -->
+  <section id="Stage-4" class="hidden">
+      <p id="stage-4-q"></p>
+      <div class="four-options-container">
+          <button id="stage-4-a1" class="four-options" onclick="navigateForward()" aria-label="Button for answering the question on click."></button>
+          <button id="stage-4-a2" class="four-options" onclick="navigateForward()" aria-label="Button for answering the question on click."></button>
+          <button id="stage-4-a3" class="four-options" onclick="navigateForward()" aria-label="Button for answering the question on click."></button>
+          <button id="stage-4-a4" class="four-options" onclick="navigateForward()" aria-label="Button for answering the question on click."></button>
+      </div>
+  </section>
+
+  <!-- Stage 5 -->
+  <section id="Stage-5" class="hidden">
+      <p id="stage-5-q"></p>
+      <div class="four-options-container">
+          <button id="stage-5-a1" class="four-options" onclick="navigateForward()" aria-label="Button for answering the question on click."></button>
+          <button id="stage-5-a2" class="four-options" onclick="navigateForward()" aria-label="Button for answering the question on click."></button>
+          <button id="stage-5-a3" class="four-options" onclick="navigateForward()" aria-label="Button for answering the question on click."></button>
+          <button id="stage-5-a4" class="four-options" onclick="navigateForward()" aria-label="Button for answering the question on click."></button>
+      </div>
+  </section>
+
+  <!-- Stage 6 -->
+  <section id="Stage-6" class="hidden">
+      <p id="stage-6-q"></p>
+      <div class="four-options-container">
+          <button id="stage-6-a1" class="four-options" onclick="navigateForward()" aria-label="Button for answering the question on click.">Option A1</button>
+          <button id="stage-6-a2" class="four-options" onclick="navigateForward()" aria-label="Button for answering the question on click.">Option A2</button>
+          <button id="stage-6-a3" class="four-options" onclick="navigateForward()" aria-label="Button for answering the question on click.">Option A3</button>
+          <button id="stage-6-a4" class="four-options" onclick="navigateForward()" aria-label="Button for answering the question on click.">Option A4</button>
+      </div>
+  </section>
+
+  <!-- Stage 7 -->
+  <section id="Stage-7" class="hidden">
+      <p id="stage-7-q"></p>
+      <div class="four-options-container">
+          <button id="stage-7-a1" class="four-options" onclick="navigateForward()" aria-label="Button for answering the question on click."></button>
+          <button id="stage-7-a2" class="four-options" onclick="navigateForward()" aria-label="Button for answering the question on click."></button>
+          <button id="stage-7-a3" class="four-options" onclick="navigateForward()" aria-label="Button for answering the question on click."></button>
+          <button id="stage-7-a4" class="four-options" onclick="navigateForward()" aria-label="Button for answering the question on click."></button>
+      </div>
+  </section>
+
+  <!-- Stats 1 -->
+<section id="stats-1" class="stats-section">
+   <p id="stats-1-p"></p>
+   <div class="two-options-container">
+       <button class="two-options" aria-label="Button for Proceeding to Map" onclick="navigateForward()">Proceed</button>
+       <button class="two-options" aria-label="Button to Go back to the question" onclick="navigateBackward()">Go Back</button>
+   </div>
 </section>
-
-<!-- 7.L-2-X============================================================================================= -->
-<section id="Stage-1-X">
-   <!-- Set 1:
-```html
-<p class="questions" id="question-1">What does HTML stand for?</p>
-<p class="answers" id="answer-1" class="answer-correct">a) Hyper Text Markup Language</p>
-<p class="answers" id="answer-2">b) Home Tool Markup Language</p>
-<p class="answers" id="answer-3">c) Hyperlinks and Text Markup Language</p>
-<p class="answers" id="answer-4">d) Hyper Text Makeup Language</p>
-```
-
-Set 2:
-```html
-<p class="questions" id="question-2">Which element is used to create a hyperlink in HTML?</p>
-<p class="answers" id="answer-5">a) &lt;a&gt;</p>
-<p class="answers" id="answer-6" class="answer-correct">&lt;link&gt;</p>
-<p class="answers" id="answer-7">&lt;p&gt;</p>
-<p class="answers" id="answer-8">&lt;div&gt;</p>
-```
-
-Set 3:
-```html
-<p class="questions" id="question-3">What is the correct HTML element for inserting a line break?</p>
-<p class="answers" id="answer-9">&lt;br&gt;</p>
-<p class="answers" id="answer-10" class="answer-correct">&lt;hr&gt;</p>
-<p class="answers" id="answer-11">&lt;break&gt;</p>
-<p class="answers" id="answer-12">&lt;line&gt;</p>
-```
-
-Set 4:
-```html
-<p class="questions" id="question-4">Which attribute is used to define inline styles in HTML?</p>
-<p class="answers" id="answer-13">a) class</p>
-<p class="answers" id="answer-14" class="answer-correct">b) style</p>
-<p class="answers" id="answer-15">c) id</p>
-<p class="answers" id="answer-16">d) src</p>
-```
-
-Set 5:
-```html
-<p class="questions" id="question-5">Which tag is used to define an unordered list in HTML?</p>
-<p class="answers" id="answer-17" class="answer-correct">&lt;ul&gt;</p>
-<p class="answers" id="answer-18">&lt;ol&gt;</p>
-<p class="answers" id="answer-19">&lt;li&gt;</p>
-<p class="answers" id="answer-20">&lt;dl&gt;</p>
-```
-
-Set 6:
-```html
-<p class="questions" id="question-6">Which attribute is used to specify an external CSS file in HTML?</p>
-<p class="answers" id="answer-21">a) style</p>
-<p class="answers" id="answer-22" class="answer-correct">b) href</p>
-<p class="answers" id="answer-23">c) src</p>
-<p class="answers" id="answer-24">d) class</p>
-```
-
-Set 7:
-```html
-<p class="questions" id="question-7">What is the correct HTML element for the largest heading?</p>
-<p class="answers" id="answer-25">&lt;h1&gt;</p>
-<p class="answers" id="answer-26">b) &lt;heading&gt;</p>
-<p class="answers" id="answer-27">c) &lt;h6&gt;</p>
-<p class="answers" id="answer-28" class="answer-correct">&lt;h2&gt;</p>
-```
-
-Set 8:
-```html
-<p class="questions" id="question-8">Which attribute is used to specify a unique identifier for an element in HTML?</p>
-<p class="answers" id="answer-29">a) id</p>
-<p class="answers" id="answer-30">b) class</p>
-<p class="answers" id="answer-31" class="answer-correct">c) data-id</p>
-<p class="answers" id="answer-32">d) identifier</p>
-```
-
-Set 9:
-```html
-<p class="questions" id="question-9">How do you create a comment in HTML?</p>
-<p class="answers" id="answer-33" class="answer-correct">a) &lt;!-- This is a comment --&gt;</p>
-<p class="answers" id="answer-34">b) // This is a comment</p>
-<p class="answers" id="answer-35">c) /* This is a comment */</p>
-<p class="answers" id="answer-36">d) ** This is a comment **</p>
-```
-
-Set 10:
-```html
-<p class="questions" id="question-10">Which element is used to define a table row in HTML?</p>
-<p class="answers" id="answer-37">&lt;table&gt;</p>
-<p class="answers" id="answer-38">&lt;th&gt;</p>
-<p class="answers" id="answer-39" class="answer-correct">&lt;tr&gt;</p>
-<p class="answers" id="answer-40">&lt;td&gt;</p>
-```
-
-Set 11:
-```html
-<p class="questions" id="question-11">What does CSS stand for?</p>
-<p class="answers" id="answer-41">a) Creative Style Sheets</p>
-<p class="answers" id="answer-42" class="answer-correct">b) Cascading Style Sheets</p>
-<p class="answers" id="answer-43">c) Computer Style Sheets</p>
-<p class="answers" id="answer-44">d) Colorful Style Sheets</p>
-```
-
-Set 12:
-```html
-<p class="questions" id="question-12">Which CSS property is used to specify the background color of an element?</p>
-<p class="answers" id="answer-45">a) background-color</p>
-<p class="answers" id="answer-46" class="answer-correct">b) background</p>
-<p class="answers" id="answer-47">c) color</p>
-<p class="answers" id="answer-48">d) bg-color</p>
-```
-
-Set 13:
-```html
-<p class="questions" id="question-13">Which CSS property is used to control the size of an element's font?</p>
-<p class="answers" id="answer-49">a) text-size</p>
-<p class="answers" id="answer-50" class="answer-correct">b) font-size</p>
-<p class="answers" id="answer-51">c) size</p>
-<p class="answers" id="answer-52">d) font-style</p>
-```
-
-Set 14:
-```html
-<p class="questions" id="question-14">What is the correct CSS syntax
-
- to select an element with the class "example"?</p>
-<p class="answers" id="answer-53">a) #example</p>
-<p class="answers" id="answer-54">b) .example</p>
-<p class="answers" id="answer-55">c) example</p>
-<p class="answers" id="answer-56" class="answer-correct">d) .example</p>
-```
-
-Set 15:
-```html
-<p class="questions" id="question-15">What is the correct CSS syntax to select all &lt;p&gt; elements inside a &lt;div&gt; element?</p>
-<p class="answers" id="answer-57">a) div > p</p>
-<p class="answers" id="answer-58">b) p div</p>
-<p class="answers" id="answer-59" class="answer-correct">c) div p</p>
-<p class="answers" id="answer-60">d) p + div</p>
-```
-
-Set 16:
-```html
-<p class="questions" id="question-16">Which CSS property is used to specify the spacing between lines of text?</p>
-<p class="answers" id="answer-61" class="answer-correct">a) line-height</p>
-<p class="answers" id="answer-62">b) text-spacing</p>
-<p class="answers" id="answer-63">c) letter-spacing</p>
-<p class="answers" id="answer-64">d) word-spacing</p>
-```
-
-Set 17:
-```html
-<p class="questions" id="question-17">What is the correct CSS syntax to set the text color of an element to red?</p>
-<p class="answers" id="answer-65">a) color: red;</p>
-<p class="answers" id="answer-66">b) text-color: red;</p>
-<p class="answers" id="answer-67">c) font-color: red;</p>
-<p class="answers" id="answer-68" class="answer-correct">d) color: red;</p>
-```
-
-Set 18:
-```html
-<p class="questions" id="question-18">Which CSS property is used to make an element bold?</p>
-<p class="answers" id="answer-69">a) font-weight</p>
-<p class="answers" id="answer-70" class="answer-correct">b) font-weight</p>
-<p class="answers" id="answer-71">c) text-decoration</p>
-<p class="answers" id="answer-72">d) font-style</p>
-```
-
-Set 19:
-```html
-<p class="questions" id="question-19">What is the correct CSS syntax to set the width and height of an element?</p>
-<p class="answers" id="answer-73">a) size: width height;</p>
-<p class="answers" id="answer-74" class="answer-correct">b) width: value; height: value;</p>
-<p class="answers" id="answer-75">c) dimension: value;</p>
-<p class="answers" id="answer-76">d) scale: value;</p>
-```
-
-Set 20:
-```html
-<p class="questions" id="question-20">Which CSS property is used to add a shadow effect to an element?</p>
-<p class="answers" id="answer-77" class="answer-correct">a) box-shadow</p>
-<p class="answers" id="answer-78">b) shadow</p>
-<p class="answers" id="answer-79">c) text-shadow</p>
-<p class="answers" id="answer-80">d) effect-shadow</p>
-``` -->
+  <!-- Stats 2 -->
+<section id="stats-2" class="stats-section">
+   <p id="stats-2-p"></p>
+   <div class="two-options-container">
+       <button class="two-options" aria-label="Button for Proceeding to Map" onclick="navigateForward()">Proceed</button>
+       <button class="two-options" aria-label="Button to Go back to the question" onclick="navigateBackward()">Go Back</button>
+   </div>
 </section>
-
+  <!-- Stats 3 -->
+<section id="stats-3" class="stats-section">
+   <p id="stats-3-p"></p>
+   <div class="two-options-container">
+       <button class="two-options" aria-label="Button for Proceeding to Map" onclick="navigateForward()">Proceed</button>
+       <button class="two-options" aria-label="Button to Go back to the question" onclick="navigateBackward()">Go Back</button>
+   </div>
+</section>
+  <!-- Stats 4 -->
+<section id="stats-4" class="stats-section">
+   <p id="stats-4-p"></p>
+   <div class="two-options-container">
+       <button class="two-options" aria-label="Button for Proceeding to Map" onclick="navigateForward()">Proceed</button>
+       <button class="two-options" aria-label="Button to Go back to the question" onclick="navigateBackward()">Go Back</button>
+   </div>
+</section>
+  <!-- Stats 5 -->
+<section id="stats-5" class="stats-section">
+   <p id="stats-5-p"></p>
+   <div class="two-options-container">
+       <button class="two-options" aria-label="Button for Proceeding to Map" onclick="navigateForward()">Proceed</button>
+       <button class="two-options" aria-label="Button to Go back to the question" onclick="navigateBackward()">Go Back</button>
+   </div>
+</section>
+  <!-- Stats 6 -->
+<section id="stats-6" class="stats-section">
+   <p id="stats-6-p"></p>
+   <div class="two-options-container">
+       <button class="two-options" aria-label="Button for Proceeding to Map" onclick="navigateForward()">Proceed</button>
+       <button class="two-options" aria-label="Button to Go back to the question" onclick="navigateBackward()">Go Back</button>
+   </div>
+</section>
+  <!-- Stats 7 -->
+<section id="stats-7" class="stats-section">
+   <p id="stats-7-p"></p>
+   <div class="two-options-container">
+       <button class="two-options" aria-label="Button for Proceeding to Map" onclick="navigateForward()">Proceed</button>
+       <button class="two-options" aria-label="Button to Go back to the question" onclick="navigateBackward()">Go Back</button>
+   </div>
+</section>
 
       <script src="app.js"></script>
    </body>
