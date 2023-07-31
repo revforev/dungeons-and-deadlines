@@ -112,7 +112,7 @@ const coinsEl = document.getElementById("coins");
 let currentPhaseIndex = 0; // Initialize the current phase index to 0 (first phase)
 
   function navigateForward() {
-	let phases = ["innit", "Logo", "Greeting", "Q-i", "Stats-i", "Briefing", "Instructions", "Map", "Stage-1-X", "Stats-1-X", "Map", "Stage-2-X", "Stats-2-X", "Map", "Shop-3-X", "Stats-3-X", "Map", "Stage-4-X", "Stats-4-X", "Map", "Stage-5-X", "Stats-5-X", "Map", "Stage-6-X", "Stats-6-X", "Map", "Stage-7-X", "Stats-7-X", "Times-Up", "Wakeup", "Ending", "Postlude", "Credits"];
+	let phases = ["innit", "Logo", "Greeting", "Q-i", "Stats-i", "Briefing", "Instructions", "Map", "Stage-1", "Stats-1", "Map", "Stage-2", "Stats-2", "Map", "Stage-3", "Stats-3", "Map", "Stage-4", "Stats-4", "Map", "Stage-5", "Stats-5", "Map", "Stage-6", "Stats-6", "Map", "Stage-7", "Stats-7", "Times-Up", "Wakeup", "Ending", "Postlude", "Credits"];
 
     // Get the current phase element from the DOM based on its ID
     let currentPhaseId = phases[currentPhaseIndex];
@@ -739,8 +739,8 @@ let quiz3 = [
 
 
     
-let quiz4 = {
-  set1: {
+let quiz4 =[
+  {
     question: "Which method is used to add elements to the end of an array in JavaScript?",
     options: [
       "shift()",
@@ -750,97 +750,97 @@ let quiz4 = {
     ],
     correctAnswerIndex: 2
   },
-  set2: {
+{
     question: "How do you concatenate two strings in JavaScript?",
     options: [
-      "a) string1 + string2",
-      "b) string1.concat(string2)",
-      "c) concat(string1, string2)",
-      "d) join(string1, string2)"
+      "string1 + string2",
+      "string1.concat(string2)",
+      "concat(string1, string2)",
+      "join(string1, string2)"
     ],
     correctAnswerIndex: 3
   },
-  set3: {
+{
     question: "What is the result of the expression: 10 % 3 in JavaScript?",
     options: [
-      "a) 1",
-      "b) 0",
-      "c) 3",
-      "d) 10"
+      "1",
+      "0",
+      "3",
+      "10"
     ],
     correctAnswerIndex: 2
   },
-  set4: {
+{
     question: "Which method is used to remove the last element from an array in JavaScript?",
     options: [
-      "a) pop()",
-      "b) push()",
-      "c) shift()",
-      "d) unshift()"
+      "pop()",
+      "push()",
+      "shift()",
+      "unshift()"
     ],
     correctAnswerIndex: 0
   },
-  set5: {
+{
     question: "What does the typeof operator return for an array?",
     options: [
-      "a) \"object\"",
-      "b) \"array\"",
-      "c) \"undefined\"",
-      "d) \"function\""
+      "\"object\"",
+      "\"array\"",
+      "\"undefined\"",
+      "\"function\""
     ],
     correctAnswerIndex: 0
   },
-  set6: {
+{
     question: "How do you access the value of a property in an object in JavaScript?",
     options: [
-      "a) object.property",
-      "b) object[\"property\"]",
-      "c) object.getProperty()",
-      "d) getProperty(object)"
+      "object.property",
+      "object[\"property\"]",
+      "object.getProperty()",
+      "getProperty(object)"
     ],
     correctAnswerIndex: 1
   },
-  set7: {
+{
     question: "Which method is used to convert a string to lowercase in JavaScript?",
     options: [
-      "a) toLowerCase()",
-      "b) toUpperCase()",
-      "c) caseLower()",
-      "d) caseUpper()"
+      "toLowerCase()",
+      "toUpperCase()",
+      "caseLower()",
+      "caseUpper()"
     ],
     correctAnswerIndex: 0
   },
-  set8: {
+{
     question: "What does the Math.random() function in JavaScript return?",
     options: [
-      "a) A random number between 0 and 1",
-      "b) A random integer",
-      "c) The value of π (pi)",
-      "d) The square root of a number"
+      "A random number between 0 and 1",
+      "A random integer",
+      "The value of π (pi)",
+      "The square root of a number"
     ],
     correctAnswerIndex: 0
   },
-  set9: {
+{
     question: "Which method is used to convert a number to a string in JavaScript?",
     options: [
-      "a) convertString()",
-      "b) toNumber()",
-      "c) parseString()",
-      "d) toString()"
+      "convertString()",
+      "toNumber()",
+      "parseString()",
+      "toString()"
     ],
     correctAnswerIndex: 3
   },
-  set10: {
+{
     question: "What is the result of the expression: true && false in JavaScript?",
     options: [
-      "a) false",
-      "b) true",
-      "c) undefined",
-      "d) null"
+      "false",
+      "true",
+      "undefined",
+      "null"
     ],
     correctAnswerIndex: 0
   }
-};
+];
 
     
     
@@ -920,3 +920,47 @@ let quiz4 = {
 //       }
 //     ];
 
+function initializeQuizForStages() {
+  const stages = ['stage-1', 'stage-2', 'stage-3', 'stage-4', 'stage-5', 'stage-6', 'stage-7'];
+  const statsText = "This feels right. You soak with motivation";
+  const incorrectAnswerText = "This is not the correct answer. You were close!";
+
+  stages.forEach((stageId, index) => {
+    const quiz = selectQuizForStage(index + 1); // index starts from 0, stages are 1-7
+    const randomSet = selectRandomSet(quiz);
+    const questionElement = document.getElementById(`${stageId}-q`);
+    questionElement.textContent = randomSet.question;
+
+    for (let i = 1; i <= 4; i++) {
+      const answerButton = document.getElementById(`${stageId}-a${i}`);
+      answerButton.textContent = randomSet.options[i - 1];
+      if (randomSet.correctAnswerIndex === i - 1) {
+        answerButton.setAttribute('onclick', `addStats("coins", 3); updateStatsText("${statsText}", ${index + 1}); navigateForward();`);
+      } else {
+        answerButton.setAttribute('onclick', `updateStatsText("${incorrectAnswerText}", ${index + 1}); navigateForward();`);
+      }
+    }
+  });
+}
+
+// Function to select the quiz based on the stage number
+function selectQuizForStage(stageNumber) {
+  if (stageNumber === 1) return quiz1;
+  else if (stageNumber >= 2 && stageNumber <= 3) return quiz2;
+  else if (stageNumber >= 4 && stageNumber <= 5) return quiz3;
+  else return quiz4;
+}
+
+// Function to select a random set from the quiz object
+function selectRandomSet(quiz) {
+  return quiz[Math.floor(Math.random() * quiz.length)];
+}
+
+// Function to update the stats section text
+function updateStatsText(text, statsIndex) {
+  const statsElement = document.getElementById(`stats-${statsIndex}-p`);
+  statsElement.textContent = text;
+}
+
+// Initialize the quiz for all stages on page load
+initializeQuizForStages();
