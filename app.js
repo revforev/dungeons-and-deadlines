@@ -140,7 +140,7 @@ let currentPhaseIndex = 0; // Initialize the current phase index to 0 (first pha
   }
 
   function navigateBackward() {
-	let phases = ["innit", "Logo", "Greeting", "Q-i", "Stats-i", "Briefing", "Instructions", "Map", "Stage-1-X", "Stats-1-X", "Map", "Stage-2-X", "Stats-2-X", "Map", "Shop-3-X", "Stats-3-X", "Map", "Stage-4-X", "Stats-4-X", "Map", "Stage-5-X", "Stats-4-X", "Map", "Stage-6-X", "Stats-6-X", "Map", "Stage-7-X", "Stats-7-X", "Times-Up", "Wakeup", "Ending", "Postlude", "Credits"];
+    let phases = ["innit", "Logo", "Greeting", "Q-i", "Stats-i", "Briefing", "Instructions", "Map", "Stage-1", "Stats-1", "Map", "Stage-2", "Stats-2", "Map", "Stage-3", "Stats-3", "Map", "Stage-4", "Stats-4", "Map", "Stage-5", "Stats-5", "Map", "Stage-6", "Stats-6", "Map", "Stage-7", "Stats-7", "Times-Up", "Wakeup", "Ending", "Postlude", "Credits"];
 
     // Get the current phase element from the DOM based on its ID
     let currentPhaseId = phases[currentPhaseIndex];
@@ -919,25 +919,57 @@ let quiz4 =[
 //         correctAnswerIndex: 2
 //       }
 //     ];
+  let currentStageIndex = 0;
+function lockedNavigator() {
+  const stages = ['stage-1', 'stage-2', 'stage-3', 'stage-4', 'stage-5', 'stage-6', 'stage-7'];
+  
+  let stageId = stages[currentStageIndex];
+  
+    const stageElements = document.querySelectorAll("." + stageId);
+    stageElements.forEach((element) => {
+      element.classList.toggle('locked');
+    });
+
+    currentStageIndex++;
+
+    if (currentStageIndex >= 0 && currentStageIndex < stages.length) {
+      let nextStageId = stages[currentStageIndex];
+      const nextStageElements = document.querySelectorAll("." + nextStageId);
+    nextStageElements.forEach((element) => {
+      element.classList.toggle('locked');
+    });
+    }
+    else {
+      console.log("You have reached the end of the stages");
+      currentStageIndex--;
+    }
+  }
+
+
 
 function initializeQuizForStages() {
   const stages = ['stage-1', 'stage-2', 'stage-3', 'stage-4', 'stage-5', 'stage-6', 'stage-7'];
-  const statsText = "This feels right. You soak with motivation";
+  const statsText = "This is correct. It fills you with determination!";
   const incorrectAnswerText = "This is not the correct answer. You were close!";
 
+  
+
+  
   stages.forEach((stageId, index) => {
     const quiz = selectQuizForStage(index + 1); // index starts from 0, stages are 1-7
     const randomSet = selectRandomSet(quiz);
     const questionElement = document.getElementById(`${stageId}-q`);
     questionElement.textContent = randomSet.question;
 
+    
+
     for (let i = 1; i <= 4; i++) {
       const answerButton = document.getElementById(`${stageId}-a${i}`);
       answerButton.textContent = randomSet.options[i - 1];
       if (randomSet.correctAnswerIndex === i - 1) {
-        answerButton.setAttribute('onclick', `addStats("coins", 3); updateStatsText("${statsText}", ${index + 1}); navigateForward();`);
+        answerButton.setAttribute('onclick', `addStats("coins", 3); updateStatsText("${statsText}", ${index + 1}); navigateForward()`);
       } else {
-        answerButton.setAttribute('onclick', `updateStatsText("${incorrectAnswerText}", ${index + 1}); navigateForward();`);
+        answerButton.setAttribute('onclick', `updateStatsText("${incorrectAnswerText}", ${index + 1}); navigateForward()`);
       }
     }
   });
@@ -951,9 +983,19 @@ function selectQuizForStage(stageNumber) {
   else return quiz4;
 }
 
-// Function to select a random set from the quiz object
+
 function selectRandomSet(quiz) {
-  return quiz[Math.floor(Math.random() * quiz.length)];
+  if (quiz.length === 0) {
+    return null; // or any appropriate value to indicate an empty array
+  }
+
+  const randomIndex = Math.floor(Math.random() * quiz.length);
+  const selectedElement = quiz[randomIndex];
+
+  // Remove the selected element from the array
+  quiz.splice(randomIndex, 1);
+
+  return selectedElement;
 }
 
 // Function to update the stats section text
