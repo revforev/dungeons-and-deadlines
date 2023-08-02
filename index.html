@@ -109,8 +109,9 @@ C.End
 
 <div class="afternoon-start hidden">
 <h1 class="typing-text">Good afternoon ☁️</h1>
-	<h2 >A mid-day lark, are you? It's good to have you on board with us!
-	<br>Are you <i>sure</i> you need another coffee?</h2>
+	<h2 >A mid-day lark, are you? 
+      <br>It's good to have you on board with us!
+	<br><br>Are you <i>sure</i> you need another coffee?</h2>
 	    <div class="two-options-container">
 <!--       Proceed to next phase-->
 <button class= "two-options" onclick="navigateForward()" aria-label="Next-phase">Yes</button>
@@ -140,10 +141,10 @@ C.End
       <p>You lay down with your eyes closed in the dark. A minute or two pass, but somehow you decide to get up. You get up and just after, you open your eyes. You pull the blinds out, but it's still dark.. </p>
       <div class="four-options-container">
 
-<button class = "four-options" onclick="navigateForward(); soloNavigator('stats-i-m-health')" aria-label="Next-phase">a. Open the window and stretch </button>
-<button class = "four-options" onclick="navigateForward(); soloNavigator('stats-i-m-energy');" aria-label="Next-phase">b. Take a sip from the water bottle </button>
+<button class = "four-options" onclick="navigateForward(); addStats('fitness', 3); soloNavigator('stats-i-m-fitness')" aria-label="Next-phase">a. Open the window and stretch </button>
+<button class = "four-options" onclick="navigateForward(); addStats('energy', 3); soloNavigator('stats-i-m-energy');" aria-label="Next-phase">b. Take a sip from the water bottle </button>
 <button class = "four-options" onclick="navigateForward(); soloNavigator('stats-i-m-back')" aria-label="Next-phase">c. Search for you phone </button>
-<button class = "four-options" onclick="navigateForward(); soloNavigator('stats-i-m-speed')" aria-label="Next-phase">d. Check your phone </button>
+<button class = "four-options" onclick="navigateForward(); addStats('speed', 3); soloNavigator('stats-i-m-speed')" aria-label="Next-phase">d. Check your phone </button>
 
 </div>
    </div>
@@ -155,23 +156,23 @@ C.End
 
       <div class="four-options-container">
 
-<button class = "four-options" onclick="soloNavigator('stats-i-a-health'); navigateForward();" aria-label="Next-phase">a. Go out for a run </button>
-<button class = "four-options" onclick="soloNavigator('stats-i-a-energy'); navigateForward();" aria-label="Next-phase">b. Have a glass of water </button>
+<button class = "four-options" onclick="soloNavigator('stats-i-a-fitness'); addStats('fitness', 3); navigateForward();" aria-label="Next-phase">a. Go out for a run </button>
+<button class = "four-options" onclick="soloNavigator('stats-i-a-energy'); addStats('energy', 3); navigateForward();" aria-label="Next-phase">b. Have a glass of water </button>
 <button class = "four-options" onclick="soloNavigator('stats-i-a-back'); navigateForward();" aria-label="Next-phase">c. Have another coffee </button>
-<button class = "four-options" onclick="soloNavigator('stats-i-a-speed'); navigateForward();" aria-label="Next-phase">d. Go to the library </button>
+<button class = "four-options" onclick="soloNavigator('stats-i-a-speed'); addStats('speed', 3); navigateForward();" aria-label="Next-phase">d. Go to the library </button>
 
 </div>
    </div>
 
    <div class="evening-q-i hidden">
-      <p>The live stream you've been watching on Twitch isn't going anywhere. You get up from your sofa and turn off the TV. You go to the kitchen. As you open your fridge, a looming thought is haunting you. <br> You close the door and..</p>
+      <p>The show you were watching isn't going anywhere. You haven't even noticed it's getting dark outside. You turn off the TV, get up from the sofa and turn the lights on. The room you're in is not exactly tidy. You go to the kitchen. As you open your fridge, a looming thought is haunting you. <br> You close the door and..</p>
 
 	       <div class="four-options-container">
 
-<button class = "four-options" onclick="navigateForward(); soloNavigator('stats-i-e-health');" aria-label="Next-phase">a. Ignore the mind. Reach for the hoummous</button>
-<button class = "four-options" onclick="navigateForward(); soloNavigator('stats-i-e-energy');" aria-label="Next-phase">b. Go get some fresh air</button>
+<button class = "four-options" onclick="navigateForward(); addStats('fitness', 3); soloNavigator('stats-i-e-fitness');" aria-label="Next-phase">a. Ignore the mind. Reach for the hoummous</button>
+<button class = "four-options" onclick="navigateForward(); addStats('energy', 3); soloNavigator('stats-i-e-energy');" aria-label="Next-phase">b. Go get some fresh air</button>
 <button class = "four-options" onclick="navigateForward(); soloNavigator('stats-i-e-back');" aria-label="Next-phase">c. Search for you phone </button>
-<button class = "four-options" onclick="navigateForward(); soloNavigator('stats-i-e-speed');" aria-label="Next-phase">d. Clean your room </button>
+<button class = "four-options" onclick="navigateForward(); addStats('speed', 3); soloNavigator('stats-i-e-speed');" aria-label="Next-phase">d. Clean your room </button>
 
 </div>
    </div>
@@ -181,22 +182,22 @@ C.End
 <section id="Stats-i" class="hidden">
 
    <div class="morning-stats-i hidden">
-      <p class="hidden" id="stats-i-m-health">You open the window. The air is crisp. You take the yoga mat from under the bed and begin to <em>stretch.</em> This feels great. </p>
+      <p class="hidden" id="stats-i-m-fitness">You open the window. The air is crisp. You take the yoga mat from under the bed and begin to <em>stretch.</em> This feels great. </p>
       <p class="hidden" id="stats-i-m-energy">This is refreshing. You feel <em>energized.</em> </p>
       <p class="hidden" id="stats-i-m-speed">You skim through notifications. Your internet bill is here! Luckily, you can pay it with the credit you have aquired. You notice the <em>speed increases</em> instantly. </p>
       <p class="hidden" id="stats-i-m-back">You pull the blinds back on. Complete darkness, falling asleep in 3...2...1... </p>
 
       <div class="two-options-container">
 <!--       Proceed to next phase-->
-<button class= "two-options" onclick="navigateForward()" aria-label="Next-phase">Yes</button>
+<button class= "two-options" onclick="navigateForward()" aria-label="Next-phase">Proceed</button>
 <!--     Undo-->
-<button class= "two-options" onclick="reloadPage()" aria-label="Previous-phase">No</button>
+<button class= "two-options" onclick="reloadPage()" aria-label="Previous-phase">Go Back</button>
       </div>
    </div>
 
    <div class="afternoon-stats-i hidden">
 
-      <p class="hidden" id="stats-i-a-health">It's actually a really nice day. You feel like you just got back in a body. This feels amazing and <em>improves your condition.</em> </p>
+      <p class="hidden" id="stats-i-a-fitness">It's actually a really nice day. You feel like you just got back in a body. This feels amazing and <em>improves your condition.</em> </p>
       <p class="hidden" id="stats-i-a-energy">Oumph! Seems like you were dehydrated. You're coming back to life. You feel <em>energised.</em> </p>
       <p class="hidden" id="stats-i-a-speed">You get to the local library. There's many people here just like you. You pull out your laptop and open Sublime. The <em>internet</em> connection here is great! </p>
       <p class="hidden" id="stats-i-a-back">You can't recall if this was your 4th of 5th of the day. You feel numb </p>
@@ -204,23 +205,23 @@ C.End
 
       <div class="two-options-container">
 <!--       Proceed to next phase-->
-<button class= "two-options" onclick="navigateForward()" aria-label="Next-phase">Yes</button>
+<button class= "two-options" onclick="navigateForward()" aria-label="Next-phase">Proceed</button>
 <!--     Undo-->
-<button class= "two-options" onclick="reloadPage()" aria-label="Previous-phase">No</button>
+<button class= "two-options" onclick="reloadPage()" aria-label="Previous-phase">Go Back</button>
       </div>
    </div>
 
    <div class="evening-stats-i hidden">
-      <p class="hidden" id="stats-i-e-health">That was much needed. You feel <em>replenished.</em></p>
+      <p class="hidden" id="stats-i-e-fitness">That was much needed. You feel <em>replenished.</em></p>
 	   <p class="hidden" id="stats-i-e-energy">You go outside. It's dark. You can feel the cool air on your skin. It fills you with <em>energy.</em></p>
 	   <p class="hidden" id="stats-i-e-speed">The pile of things next to you is now getting smaller and smaller. Underneath all the magazines - a black flash drive with a blue label on it. You can't figure out what it is. You plug it in. Your <em>internet speed</em> increases instantly! </p>
 	   <p class="hidden" id="stats-i-e-back">You find your phone between cushions on the sofa. No notifications. You feel like you’re stuck in a loop.</p>
       
       <div class="two-options-container">
 <!--       Proceed to next phase-->
-<button class= "two-options" onclick="navigateForward()" aria-label="Next-phase">Yes</button>
+<button class= "two-options" onclick="navigateForward()" aria-label="Next-phase">Proceed</button>
 <!--     Undo-->
-<button class= "two-options" onclick="reloadPage()" aria-label="Previous-phase">No</button>
+<button class= "two-options" onclick="reloadPage()" aria-label="Previous-phase">Go Back</button>
       </div>
    </div>
    
@@ -235,20 +236,21 @@ The internet speed is rubbish. Parties are great. You're always on the road.
 The only question is: can you pay the rent by the end of the week?</p>
 <div class="two-options-container">
 <!--       Proceed to next phase-->
-<button class= "two-options" onclick="navigateForward()" aria-label="Next-phase">Yes</button>
+<button class= "two-options" onclick="navigateForward()" aria-label="Next-phase">Wait, what?</button>
 <!--     Undo-->
-<button class= "two-options" onclick="reloadPage()" aria-label="Previous-phase">No</button>
+<button class= "two-options" onclick="reloadPage()" aria-label="Previous-phase">Go Back</button>
       </div>
 </section>
 
 <!-- 5b.Instructions===================================================================================== -->
 <section id="Instructions" class="hidden">
-   <p>The rent is due in seven days! You need to get 10 coins for the rent. Each passed challenge will give out 3 coins. Good luck!</p>
+   <p>The rent is due in seven days! You need to get 15 coins for the rent. 
+      <br>Each passed challenge will give out 3 coins. Good luck!</p>
    <div class="two-options-container">
 <!--       Proceed to next phase-->
-<button class= "two-options" onclick="navigateForward();  soloNavigator('statsbar'); soloNavigator('undoandrestart');" aria-label="Next-phase">Yes</button>
+<button class= "two-options" onclick="navigateForward();  soloNavigator('statsbar'); soloNavigator('undoandrestart');" aria-label="Next-phase">Proceed</button>
 <!--     Undo-->
-<button class= "two-options" onclick="reloadPage()" aria-label="Previous-phase">No</button>
+<button class= "two-options" onclick="reloadPage()" aria-label="Previous-phase">Go Back</button>
       </div>
 
 </section>
@@ -280,9 +282,9 @@ The only question is: can you pay the rent by the end of the week?</p>
       </div>
    
    <div class="stage">
-   <button class = "map-buttons stage-5 deadline locked" id = "stage-5-1" onclick="navigateForward();" aria-label="Start button, click to start the game!"> </button>
-   <button class = "map-buttons stage-5 deadline locked" id = "stage-5-2" onclick="navigateForward();" aria-label="Start button, click to start the game!"> </button>
-   <button class = "map-buttons stage-5 deadline locked" id = "stage-5-3" onclick="navigateForward();" aria-label="Start button, click to start the game!"> </button>
+   <button class = "map-buttons stage-5 locked shop" id = "stage-5-1" onclick="navigateForward();" aria-label="Start button, click to start the game!"> </button>
+   <button class = "map-buttons stage-5 locked shop" onclick="navigateForward();" aria-label="Start button, click to start the game!"> </button>
+   <button class = "map-buttons stage-5 locked shop" onclick="navigateForward();" aria-label="Start button, click to start the game!"> </button>
       </div>
 
    <div class="stage">
@@ -396,7 +398,7 @@ The only question is: can you pay the rent by the end of the week?</p>
 <section id="Stats-3" class="stats-section hidden">
    <p id="stats-3-p"></p>
    <div class="two-options-container">
-       <button class="two-options" aria-label="Button for Proceeding to Map" onclick="lockedNavigator(); navigateForward()">Proceed</button>
+       <button class="two-options" aria-label="Button for Proceeding to Map" onclick="lockedNavigator();  navigateForward(); scrollToElement('stage-4-1')">Proceed</button>
        <button class="two-options" aria-label="Button to Go back to the question" onclick="navigateBackward()">Go Back</button>
    </div>
 </section>
@@ -404,7 +406,7 @@ The only question is: can you pay the rent by the end of the week?</p>
 <section id="Stats-4" class="stats-section hidden">
    <p id="stats-4-p"></p>
    <div class="two-options-container">
-       <button class="two-options" aria-label="Button for Proceeding to Map" onclick="lockedNavigator(); navigateForward()">Proceed</button>
+       <button class="two-options" aria-label="Button for Proceeding to Map" onclick="lockedNavigator(); navigateForward(); scrollToElement('stage-5-1')">Proceed</button>
        <button class="two-options" aria-label="Button to Go back to the question" onclick="navigateBackward()">Go Back</button>
    </div>
 </section>
@@ -412,7 +414,17 @@ The only question is: can you pay the rent by the end of the week?</p>
 <section id="Stats-5" class="stats-section hidden">
    <p id="stats-5-p"></p>
    <div class="two-options-container">
-       <button class="two-options" aria-label="Button for Proceeding to Map" onclick="lockedNavigator(); navigateForward()">Proceed</button>
+       <button class="two-options" aria-label="Button for Proceeding to Map" onclick="lockedNavigator();  navigateForward()">Proceed</button>
+       <button class="two-options" aria-label="Button to Go back to the question" onclick="navigateBackward()">Go Back</button>
+   </div>
+</section>
+<!--  Call for food -->
+<section id="Call-for-food" class="hidden">
+   <p>'Brekek!' You suddenly hear a frog sound! 
+      <br>..or is it your stomach? You can't go on like this. 
+      <br>You decide to take a break to go look for food. You get your shoes on and leave the house..</p>
+   <div class="two-options-container">
+       <button class="two-options" aria-label="Button for Proceeding to Map" onclick="navigateForward()">Proceed</button>
        <button class="two-options" aria-label="Button to Go back to the question" onclick="navigateBackward()">Go Back</button>
    </div>
 </section>
@@ -420,7 +432,7 @@ The only question is: can you pay the rent by the end of the week?</p>
 <section id="Stats-6" class="stats-section hidden">
    <p id="stats-6-p"></p>
    <div class="two-options-container">
-       <button class="two-options" aria-label="Button for Proceeding to Map" onclick="lockedNavigator(); navigateForward()">Proceed</button>
+       <button class="two-options" aria-label="Button for Proceeding to Map" onclick="lockedNavigator(); navigateForward();scrollToElement('stage-7-1')">Proceed</button>
        <button class="two-options" aria-label="Button to Go back to the question" onclick="navigateBackward()">Go Back</button>
    </div>
 </section>
@@ -431,6 +443,115 @@ The only question is: can you pay the rent by the end of the week?</p>
        <button class="two-options" aria-label="Button for Proceeding to Map" onclick="lockedNavigator(); navigateForward()">Proceed</button>
        <button class="two-options" aria-label="Button to Go back to the question" onclick="navigateBackward()">Go Back</button>
    </div>
+</section>
+<!-- Shop-inside -->
+<section id="Shop-outside" class="hidden">
+	<div class="flex-container">
+<img class="shop-img" src="images/svg/levels/station-outside.png" alt="">
+		<p>The streets feel dark. 
+			<br>There isn't much going on in this part of town. 
+			<br>A motorcycle blasts past you every minute or so, ending the quietness for a brief second.
+			<br>
+			<br>You pass some warehouses and see the shadow of a majestic building, what was once a gas holder.
+			<br>You look up and see some cranes in the distance. A few seagulls fly by above the horizon. 
+			<br>A cold breeze tries to clear the sky to no result. 
+			<br>
+			As you walk further, you see some colourful lights reflecting on a grey, cloudy mass. As you get closer, you notice a petrol station a few ten yards away..</p>
+</div>
+<div class="two-options-container">
+   <button class="two-options" aria-label="Button for Proceeding to Map" onclick="navigateForward()">Go inside</button>
+   <button class="two-options" aria-label="Button to Go back to the question" onclick="navigateBackward()">Go Back</button>
+</div>
+
+</section>
+<!-- Shop-outside -->
+<section id="Shop-inside" class="hidden">
+   <div class="flex-container">
+      <img class="shop-img" src="images/svg/levels/station-inside.png" alt="">
+            <p>The station shop slides open and you step inside. The clerk pauses his handsfree conversation to look you in the eye for exactly half a second. 
+               <br>As you make your way through the aisle, you stumble into an utility trolley. On it, a scattering of shining artefacts with yellow tags on them. Protein Bars.
+               <br>You go past them, approaching the till. The clerk notices you and asks:
+               <br>"'Alright?"
+               <br>"Fine thanks. Just need to make up my mind.."
+               <br>He looks away and resumes his conversation. You look around the counter.
+               <br>Finally, you settle on something. Looking back to the clerk, you say "sorry, can I please have a.."
+            </p>
+      </div>
+      <div class="four-options-container">
+         <button class="four-options" onclick="navigateForward(); spendStats('coins', 3); addStats('fitness', 1); addStats('energy', 2); soloNavigator('stats-protein-bar');" aria-label="">Cookies & Cream 15g Protein Bar (3 coins)</button>
+         <button class="four-options" onclick="navigateForward(); soloNavigator('stats-no-thanks');" aria-label="Button to politely decline and say 'I'm good'">Actually..I'm good..</button>
+         <button class="four-options" onclick="navigateForward(); spendStats('coins', 3); scratchcard(); soloNavigator('stats-scratch-card');" aria-label="">100% WINS Scratch Card (3 coins)</button>
+         <button class="four-options" onclick="navigateForward(); spendStats('coins', 3); addStats('speed', 2); soloNavigator('stats-ethernet-cable');" aria-label="">Basic Ethernet Cable (3 coins)</button>
+     </div>
+      
+
+</section>
+<!-- Shop-stats -->
+<section id="Shop-stats" class="hidden">
+   
+
+      <p class="hidden" id="stats-protein-bar">You hand over the protein bar to the clerk. 'That will be 2.98 coins please!' You hand over three coins, smile and make your way to the exit. 
+         <br>Once outside, you open and try the protein bar. Eh, at least it'll make the hunger go away for a minute..</p>
+      <p class="hidden" id="stats-scratch-card"> </p>
+      <p class="hidden" id="stats-ethernet-cable">'One of these cables please'! The clerk seems confused for a second, but then hands you the cable. '2.98 coins, please!'. 
+         <br>You figure out these don't get bought too often. These people don't know what they're missing. I'll get a bump from this for sure! 
+      </p>
+      <p class="hidden" id="stats-no-thanks">As you make a half second eye contact with the clerk, you decide to look away. You step towards the exit and look back. His face looks the same as when you entered the shop. He even seems relieved that he won't have to pause the conversation..</p>
+
+      <div class="two-options-container">
+<!--       Proceed to next phase-->
+<button class= "two-options" onclick="navigateForward(); scrollToElement('stage-6-1')" aria-label="Next-phase">Proceed</button>
+<!--     Undo-->
+<button class= "two-options" onclick="reloadPage()" aria-label="Previous-phase">Go back</button>
+
+   </div>
+</section>
+
+<!-- "Times-Up" -->
+<section id="Times-Up" class="hidden">
+	<div class="flex-container">
+<img class="shop-img" src="images/svg/levels/times-out.png" alt="">
+		<p>You're lounging. The TV is on. Maybe this week was not too bad after all. You feel like going out, so you want to check on your friend. You reach for the phone, but there's a notification you notice. A memento that simply reads "rent tomorrow". Oh no! Have you got enough coins? 
+      </p>
+</div>
+<div class="two-options-container">
+   <button class="two-options" aria-label="Button for Proceeding to Map" onclick="lockedNavigator(); timesUp(stats); navigateForward()">Procceed</button>
+   <button class="two-options" aria-label="Button to Go back to the question" onclick="navigateBackward()">Go Back</button>
+</div>
+
+</section>
+
+<!-- "Ending"-->
+<section id="Ending" class="hidden">
+	<div class="flex-container">
+<img id="room-beam" class="hidden" src="images/svg/levels/room.png" alt="">
+<img id="knock-door" class="hidden" src="images/svg/levels/knock.png" alt="">
+<img id="call-friend" class="hidden" src="images/svg/levels/call-friend.png" alt="">
+<img id="go-run" class="hidden" src="images/svg/levels/run.png" alt="">
+
+		<p id="ending-p"> </p>
+</div>
+<div class="two-options-container">
+   <button class="two-options" aria-label="Button for Proceeding to Map" onclick="lockedNavigator(); navigateForward()">Proceed</button>
+   <button class="two-options" aria-label="Button to Go back to the question" onclick="navigateBackward()">Go Back</button>
+</div>
+
+</section>
+
+<!--"Postlude" -->
+<section id="Postlude" class="hidden">
+	<div class="flex-container">
+<img class="shop-img" src="images/svg/levels/pow.png" alt="">
+      <div><h2>You won!</h2>
+		<p>You aquired enough coins to pay for this months rent. It hasn't always been easy, but this is a fantastic outcome.
+         <br>However, another month is just starting. Feel free to start over and face new challenges!
+      </p>
+      </div>
+</div>
+<div class="two-options-container">
+   <button class="two-options" aria-label="Button to Go back to the question" onclick="reloadPage()">Start Over</button>
+</div>
+
 </section>
 
       <script src="app.js"></script>

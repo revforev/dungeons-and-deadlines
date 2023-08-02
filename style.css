@@ -148,20 +148,21 @@ body {
 }
 
 h1 {
-    font-size: 6em;
+    font-size: 5em;
     font-weight: 600;
     margin-bottom: 5px;
 	display: block;
-	margin-left: 180px;
+	margin-left: 370px;
 	margin-top: 150px;
+  margin-bottom:80px;
 	
 }
 h2 {
-    font-size: 3em;
+    font-size: 2em;
     font-weight: 600;
     margin-bottom: 5px;
     color: var(--palered);
-    width: 70%;
+    width: 60%;
 	text-align: left;
 	display: block;
 	margin: 0 auto;
@@ -169,7 +170,7 @@ h2 {
 }
 
 p {
-    font-size: 2.3em;
+    font-size: 1.8em;
     font-weight: 600;
     margin-bottom: 5px;
     color: var(--palered);
@@ -179,6 +180,10 @@ p {
 	margin: 0 auto;
 	margin-top: 200px;
 	
+}
+
+i {
+  font-style: italic;
 }
 
 /*=====================INTERACT==========================*/
@@ -332,6 +337,7 @@ button {
 	width: 280px;
 	height: 90px;
 	border-radius: 8px;
+  margin-top:30px;
 	
 }
 .two-options:hover, .four-options:hover {
@@ -353,6 +359,7 @@ button {
 	width: 250px;
 	height: 120px;
 	border-radius: 8px;
+  margin-top:80px;
 }
 /*=================================================================================================================*/
 /*LAYOUT*/
@@ -365,7 +372,23 @@ main {
   padding: 100px;
 	
 }
+.shop-img {
+	width: 70%;
+	height: 70%;
+}
+.flex-container {
+	display: flex;
+	align-content: center;
+  margin-top: 100px;
+}
+.flex-container p {
+	font-size: 1.1em;
+	padding: 1em;
+	font-weight: 500;
+	border: 1px solid black;
+	margin-left:1em;
 
+}
 /*============================================================================================================
 ====MAP======================================================================================================
 ==============================================================================================================*/
@@ -405,8 +428,13 @@ align-content: center;
   height: 50px; 
 }
 .locked{
-  background-image: url('images/icons/locked.png');
+  background-image: url('images/icons/locked.png') !important;
   cursor:not-allowed;
+}
+
+.shop{
+  background-image: url('images/icons/questionmark.png');
+  cursor:pointer;
 }
 
 .legend {
@@ -513,7 +541,27 @@ nav a:hover{
     height: 100px;
   }
   .four-options-container {
-    margin-top: 2.7em;
+    margin-top: 1.5em;
   }
+  .shop-img {
+    width: 65%;
+    height: 65%;
+}
+.flex-container {
+    display: flex;
+    align-content: center;
+  margin-top: 100px;
+}
+.flex-container p {
+    font-size: .97em;
+    padding: 1em;
+    font-weight: 500;
+    border: 1px solid black;
+    margin-left:1em;
+
+}
+.two-options-container {
+  margin-top: 1.45em;
+}
 
   }

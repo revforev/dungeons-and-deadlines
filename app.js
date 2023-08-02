@@ -2,7 +2,12 @@
 function changeBackgroundColor() {
       document.body.style.backgroundColor = "white";
     }
-
+    function scrollToElement(elementId) {
+      var element = document.getElementById(elementId);
+      if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+      }
+  }
 // =======================================================TOGGLE DROPDOWN====================================
 var coll = document.getElementsByClassName("collapsible");
 var i;
@@ -112,7 +117,7 @@ const coinsEl = document.getElementById("coins");
 let currentPhaseIndex = 0; // Initialize the current phase index to 0 (first phase)
 
   function navigateForward() {
-	let phases = ["innit", "Logo", "Greeting", "Q-i", "Stats-i", "Briefing", "Instructions", "Map", "Stage-1", "Stats-1", "Map", "Stage-2", "Stats-2", "Map", "Stage-3", "Stats-3", "Map", "Stage-4", "Stats-4", "Map", "Stage-5", "Stats-5", "Map", "Stage-6", "Stats-6", "Map", "Stage-7", "Stats-7", "Times-Up", "Wakeup", "Ending", "Postlude", "Credits"];
+	let phases = ["innit", "Logo", "Greeting", "Q-i", "Stats-i", "Briefing", "Instructions", "Map", "Stage-1", "Stats-1", "Map", "Stage-2", "Stats-2", "Map", "Stage-3", "Stats-3", "Map", "Stage-4", "Stats-4", "Map", "Stage-5", "Stats-5", "Call-for-food", "Shop-outside", "Shop-inside", "Shop-stats", "Map", "Stage-6", "Stats-6", "Map", "Stage-7", "Stats-7", "Times-Up", "Ending", "Postlude"];
 
     // Get the current phase element from the DOM based on its ID
     let currentPhaseId = phases[currentPhaseIndex];
@@ -140,7 +145,7 @@ let currentPhaseIndex = 0; // Initialize the current phase index to 0 (first pha
   }
 
   function navigateBackward() {
-    let phases = ["innit", "Logo", "Greeting", "Q-i", "Stats-i", "Briefing", "Instructions", "Map", "Stage-1", "Stats-1", "Map", "Stage-2", "Stats-2", "Map", "Stage-3", "Stats-3", "Map", "Stage-4", "Stats-4", "Map", "Stage-5", "Stats-5", "Map", "Stage-6", "Stats-6", "Map", "Stage-7", "Stats-7", "Times-Up", "Wakeup", "Ending", "Postlude", "Credits"];
+    let phases = ["innit", "Logo", "Greeting", "Q-i", "Stats-i", "Briefing", "Instructions", "Map", "Stage-1", "Stats-1", "Map", "Stage-2", "Stats-2", "Map", "Stage-3", "Stats-3", "Map", "Stage-4", "Stats-4", "Map", "Stage-5", "Stats-5", "Call-for-food", "Shop-outside", "Shop-inside", "Shop-stats", "Map", "Stage-6", "Stats-6", "Map", "Stage-7", "Stats-7", "Times-Up", "Ending", "Postlude"];
 
     // Get the current phase element from the DOM based on its ID
     let currentPhaseId = phases[currentPhaseIndex];
@@ -222,7 +227,43 @@ function reloadPage() {
     }
   }
 
+  function timesUp(stats) {
+    const endingElement = document.getElementById("ending-p");
+    const { coins, energy, speed, fitness } = stats;
+    
 
+    
+
+   
+
+    
+    
+    if (coins >= 15 ) {
+      let roomEnding = document.getElementById('room-beam');
+
+
+    roomEnding.classList.remove("hidden");
+      endingElement.textContent = "A beam of sun hits your windows. You wake up to a beautiful sunny day. You make tea and go pay your rent.\n\nIt’s been a wild week, but now you have the rest of the day to relax. You go for a walk in the park.";
+    } else if (coins < 15 && energy > speed && energy > fitness) {
+      let friendEnding = document.getElementById('call-friend');
+
+
+    friendEnding.classList.remove("hidden");
+      endingElement.textContent = "You wake up in a flash. Rent is due today. You almost have enough money for the rent, but still need a few coins.\n\nYou feel strangely motivated and energized. You start calling your friends.\nOne of your friends is looking for someone to work on an event for a few hours in the afternoon. They’re willing to pay cash in hand. This is a godsend.\nThe shift goes well, and you manage to pay your rent just in time. What a ride it’s been!";
+    } else if (coins < 15 && speed > energy && speed > fitness) {
+      let doorEnding = document.getElementById('knock-door');
+
+
+      doorEnding.classList.remove("hidden");
+      endingElement.textContent = "You wake up at the sound of a notification. Not a second passes and you hear a shy knock on the door. The kind of quiet knock you wouldn't have heard in your sleep for sure. You dress up and go look through the door lens. The neighbor from next door.\n\n“Hi, I got a huge favor to ask for! I need to start working in 10 minutes, and I can’t get the internet to work. Is there a chance I could use your WIFI just for five minutes?”\nYour speed clocks at " + speed + ". Whoa! You assure them it’s perfectly fine, they’re welcome to use it for the whole day. You hand them your Wi-Fi password. They answer: “Phew! This is a godsend”\nIn the lunch break, the neighbor comes back to thank us. They look so relieved. They want to know if there’s anything they can do for you. You ask if you can borrow " + coins + " coins. You see their face turn into a big smile. “That’s nothing! Please allow me to help with you this. You don’t need to worry about giving them back!” You can see genuine joy on their face.\nThey hand you the remaining coins. Oh, how things pan out sometimes!";
+    } else if (coins < 15 && fitness > speed && fitness > energy) {
+      let runEnding = document.getElementById('go-run');
+    runEnding.classList.remove("hidden");
+      endingElement.textContent = "You wake up feeling like you’re in a strangely good shape. You jump in your sneakers and go for a run. While running in a park, you notice something shining on the floor. Might it be coins? Exactly how much you needed. You look around, but the first person you can see is half a mile away. You take the coins and head back home. You manage to pay your rent in time, and also had a nice workout today. Good job!";
+    } else {
+      endingElement.textContent = "You didn't win this time, but don't worry, there's always another chance!";
+    }
+  }
 // =====================================MAP==================================================================
 let quiz1 = [
   {
@@ -1006,3 +1047,17 @@ function updateStatsText(text, statsIndex) {
 
 // Initialize the quiz for all stages on page load
 initializeQuizForStages();
+
+
+function scratchcard() {
+  const probability = Math.random(); // Generates a random value between 0 and 1
+
+  // 10% chance to run addStats('coins', 6)
+  if (probability <= 0.1) {
+    addStats('coins', 5);
+    document.getElementById('stats-scratch-card').innerText = 'As you scratch away, you notice a symbol of a yacht repeats itself three times. Next to it, a tag that says "5 coins". The day has come. This is amazing!';
+  } else {
+    document.getElementById('stats-scratch-card').innerText =
+      'Scratching away, there are two of each symbols. It looks like you nearly won the jackpot. Better luck next time!';
+  }
+}
